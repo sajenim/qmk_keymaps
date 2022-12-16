@@ -17,7 +17,6 @@
 #include QMK_KEYBOARD_H
 #include "config.h"
 #include "keycodes.h"
-#include "leader.h"
 
 /* Define our layers */
 enum layers {
@@ -275,35 +274,6 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-/* Define our leader key sequences */
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-  LEADER_DICTIONARY() {
-    leading = false;
-    leader_end();
-    
-    // Portage commands
-    SEQ_TWO_KEYS(KC_E, KC_S) {
-        SEND_STRING(SEARCH);
-    }
-    SEQ_TWO_KEYS(KC_E, KC_I) {
-        SEND_STRING(INSTALL);
-    }
-    SEQ_TWO_KEYS(KC_E, KC_R) {
-        SEND_STRING(REMOVE);
-    }
-    SEQ_TWO_KEYS(KC_E, KC_U) {
-        SEND_STRING(UPDATE);
-    }
-    SEQ_THREE_KEYS(KC_E, KC_U, KC_U) {
-        SEND_STRING(UPGRADE);
-    }
-    SEQ_TWO_KEYS(KC_E, KC_C) {
-        SEND_STRING(DEPCLEAN);
-    }
-  }
-}
 /* Keyboard Post Initialization */
 void keyboard_post_init_user(void) {
     autoshift_disable();
