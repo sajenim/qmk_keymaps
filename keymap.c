@@ -24,11 +24,13 @@ enum layers {
     _QWERTY,
     _COLEMAK,
     _DVORAK,
+    _CANARY,
     // Optimized dead-key positioning + homerow mods and a few misc features
     // Requires a layer per default layout for homerow mod combatiability
     _MODQWERTY,
     _MODCOLEMAK,
     _MODDVORAK,
+    _MODCANARY,
     // layouts that enable extra functionality
     _SPACEFN,
     _FN1,
@@ -137,7 +139,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_CAPS,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,     KC_MINS,            KC_ENT,
       KC_LSFT,           KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,     KC_Z,               KC_RSFT,
       KC_LCTL,  KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT,  MO(_FN1), MO(_FN2), KC_RCTL),
-    
+
+     /**
+     * Canary
+     *
+     * This layout is the result of collaboration between many of the top layout creators from the AKL (Alternate Keyboard Layout) community
+     * Reflects a lot of different ideas and optimization strategies combined together into one.
+     *
+     * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
+     * │ESC│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │ BKSPC │
+     * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
+     * │ TAB │ W │ L │ Y │ P │ K │ Z │ X │ O │ U │ ; │ [ │ ] │  \  │
+     * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
+     * │ CAPS │ C │ R │ S │ T │ B │ F │ N │ E │ I │ A │ ' │ ENTER  │
+     * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
+     * │ LSHIFT │ J │ V │ D │ G │ Q │ M │ H │ / │ , │ . │  RSHIFT  │
+     * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
+     * │CTRL│GUI │ALT │          SPACE         │ALT │FN1 │FN2 │CTRL│
+     * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
+     *
+     */
+    [_CANARY] = LAYOUT_ansi_61(
+      KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,
+      KC_TAB,   KC_W,    KC_L,    KC_Y,    KC_P,    KC_K,    KC_Z,    KC_X,    KC_O,    KC_U,    KC_SCLN,  KC_LBRC,  KC_RBRC,  KC_BSLS,
+      KC_CAPS,  KC_C,    KC_R,    KC_S,    KC_T,    KC_B,    KC_F,    KC_N,    KC_E,    KC_I,    KC_A,     KC_QUOT,            KC_ENT,
+      KC_LSFT,           KC_J,    KC_V,    KC_D,    KC_G,    KC_Q,    KC_M,    KC_H,    KC_SLSH, KC_COMM,  KC_DOT,             KC_RSFT,
+      KC_LCTL,  KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT,  MO(_FN1), MO(_FN2), KC_RCTL),
+
     /**
      * MODIFIERS + MISC FEATURES
      *
@@ -220,7 +248,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
      * │   │   │   │   │   │   │   │   │   │   │   │   │   │BOOTLDR│
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │ RGB │QTY│CAK│DAK│   │   │   │   │   │   │   │   │   │     │
+     * │ RGB │QTY│CAK│DAK│CRY│   │   │   │   │   │   │   │   │     │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
      * │      │   │   │   │   │   │   │   │   │   │   │   │  MODS  │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
@@ -232,7 +260,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_FN2] = LAYOUT_ansi_61(
       MOD_TOG,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,
-      RGB_TOG,  QWERTY,   COLEMAK, DVORAK,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+      RGB_TOG,  QWERTY,   COLEMAK, DVORAK,  CANARY,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
       XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
       XXXXXXX,  XXXXXXX,  XXXXXXX,                            XXXXXXX,                            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),

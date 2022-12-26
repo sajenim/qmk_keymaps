@@ -4,6 +4,7 @@
 #define QWERTY  DF(_QWERTY)
 #define COLEMAK DF(_COLEMAK)
 #define DVORAK  DF(_DVORAK)
+#define CANARY  DF(_CANARY)
 
 // Extra layers
 #define SPACEFN LT(_SPACEFN, KC_SPC)
