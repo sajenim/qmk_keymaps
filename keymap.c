@@ -22,14 +22,8 @@
 enum layers {
     // Our default layouts
     _QWERTY,
-    _COLEMAK,
-    _DVORAK,
     _CANARY,
     // Optimized dead-key positioning + homerow mods and a few misc features
-    // Requires a layer per default layout for homerow mod combatiability
-    _MODQWERTY,
-    _MODCOLEMAK,
-    _MODDVORAK,
     _MODCANARY,
     // layouts that enable extra functionality
     _SPACEFN,
@@ -90,57 +84,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI,  KC_LALT,                            KC_SPC,                             KC_RALT,  MO(_FN1), MO(_FN2), KC_RCTL),
 
      /**
-     * Colemak-DH
-     *
-     * Designed to make typing more efficient and comfortable by placing the most frequently used letters of the English language on the home row.
-     * Created on 1 January 2006, it is named after its inventor, Shai Coleman.
-     *  
-     * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │ESC│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │ BKSPC │
-     * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │ TAB │ Q │ W │ F │ P │ B │ J │ L │ U │ Y │ ; │ [ │ ] │  \  │ 
-     * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │ CAPS │ A │ R │ S │ T │ G │ M │ N │ E │ I │ O │ ' │ ENTER  │
-     * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
-     * │ LSHIFT │ X │ C │ D │ V │ Z │ K │ H │ , │ . │ / │  RSHIFT  │
-     * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │CTRL│GUI │ALT │          SPACE         │ALT │FN1 │FN2 │CTRL│
-     * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
-     *
-     */
-    [_COLEMAK] = LAYOUT_ansi_61(
-      KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,
-      KC_TAB,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,  KC_LBRC,  KC_RBRC,  KC_BSLS,
-      KC_CAPS,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,     KC_QUOT,            KC_ENT,
-      KC_LSFT,           KC_X,    KC_C,    KC_D,    KC_V,    KC_Z,    KC_K,    KC_H,    KC_COMM, KC_DOT,   KC_SLSH,            KC_RSFT,
-      KC_LCTL,  KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT,  MO(_FN1), MO(_FN2), KC_RCTL), 
-
-    /**
-     * Dvorak
-     * 
-     * Patented in 1936 by August Dvorak and his brother-in-law, William Dealey, as a faster and more ergonomic alternative to the QWERTY layout.
-     *
-     * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │ESC│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ [ │ ] │ BKSPC │
-     * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │ TAB │ ' │ , │ . │ P │ Y │ F │ G │ C │ R │ L │ / │ = │  \  │ 
-     * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │ CAPS │ A │ O │ E │ U │ I │ D │ H │ T │ N │ S │ - │ ENTER  │
-     * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
-     * │ LSHIFT │ ; │ Q │ J │ K │ X │ B │ M │ W │ V │ / │  RSHIFT  │
-     * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │CTRL│GUI │ALT │          SPACE         │ALT │FN1 │FN2 │CTRL│
-     * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
-     *
-     */
-    [_DVORAK] = LAYOUT_ansi_61(
-      KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_LBRC,  KC_RBRC,  KC_BSPC,
-      KC_TAB,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,     KC_SLSH,  KC_EQL,   KC_BSLS,
-      KC_CAPS,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,     KC_MINS,            KC_ENT,
-      KC_LSFT,           KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,     KC_Z,               KC_RSFT,
-      KC_LCTL,  KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT,  MO(_FN1), MO(_FN2), KC_RCTL),
-
-     /**
      * Canary
      *
      * This layout is the result of collaboration between many of the top layout creators from the AKL (Alternate Keyboard Layout) community
@@ -169,8 +112,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /**
      * MODIFIERS + MISC FEATURES
      *
-     * Currently only compatiable with colemak-dh
-     *
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
      * │ ` │   │   │   │   │   │   │   │   │   │   │   │   │       │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
@@ -180,23 +121,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
      * │        │   │   │   │   │   │   │   │   │   │   │          │
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │HYPR│MEH │LEAD│                        │    │    │    │    │
+     * │HYPR│MEH │LEAD│         SPACEFN        │    │    │    │    │
      * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
      *
      * Credit: https://precondition.github.io/home-row-mods
      *
      */
-    [_MODCOLEMAK] = LAYOUT_ansi_61(
+    [_MODCANARY] = LAYOUT_ansi_61(
       KC_GRV,   _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______,  _______,
       _______,  _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______,  _______,
-      DK_MOD4,  HOME_A,   HOME_R,  HOME_S,  HOME_T,  _______, _______, HOME_N,  HOME_E,  HOME_I,  HOME_O,   _______,            _______,
+      DK_MOD4,  HOME_C,   HOME_R,  HOME_S,  HOME_T,  _______, _______, HOME_N,  HOME_E,  HOME_I,  HOME_A,   _______,            _______,
       XXXXXXX,            _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______,            XXXXXXX,
       DK_HYPR,  DK_MEH,   QK_LEAD,                            SPACEFN,                            XXXXXXX,  _______,  _______,  XXXXXXX),
 
     /**
      * SPACEFN
      *
-     * 
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
      * │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│DELWORD│
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
@@ -223,11 +163,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Function 1
      *
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │   │   │   │   │   │   │   │   │   │   │   │   │   │       │
+     * │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│       │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │     │   │   │   │   │   │   │   │   │   │   │   │   │     │
+     * │     │   │UP │   │   │   │   │   │   │   │   │   │   │     │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │      │   │   │   │   │   │   │   │   │   │   │   │        │
+     * │      │LFT│DWN│RGT│   │   │   │   │   │   │   │   │        │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
      * │        │   │   │   │   │   │   │   │   │   │   │          │
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
@@ -246,11 +186,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Function 2
      *
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │   │   │   │   │   │   │   │   │   │   │   │   │   │BOOTLDR│
+     * │MOD│   │   │   │   │   │   │   │   │   │   │   │   │BOOTLDR│
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │ RGB │QTY│CAK│DAK│CRY│   │   │   │   │   │   │   │   │     │
+     * │ RGB │   │   │   │   │   │   │   │   │   │   │   │   │     │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │      │   │   │   │   │   │   │   │   │   │   │   │  MODS  │
+     * │      │   │   │   │   │   │   │   │   │   │   │   │        │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
      * │        │   │   │   │   │   │   │   │   │   │   │          │
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
@@ -260,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_FN2] = LAYOUT_ansi_61(
       MOD_TOG,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,
-      RGB_TOG,  QWERTY,   COLEMAK, DVORAK,  CANARY,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+      RGB_TOG,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
       XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
       XXXXXXX,  XXXXXXX,  XXXXXXX,                            XXXXXXX,                            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
@@ -269,24 +209,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Define the behaviour of our custom keycodes */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    case MOD_TOG:
-        if (record->event.pressed) {
-            // toggle our software features
-            autoshift_toggle();
-            combo_toggle();
-            // toggle our mod layer
-            layer_invert(_MODCOLEMAK);
-        }
-        break;
+        case MOD_TOG:
+            if (record->event.pressed && layer_state_is(_CANARY)) {
+                layer_invert(_MODCANARY);
+            }
+            return false;
+        default:
+            return true;
     }
-    return true;
+}
+
+/* Custom layer handling */
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case _MODCANARY:
+            autoshift_enable();
+            combo_enable();
+            break;
+        default:
+            autoshift_disable();
+            combo_disable();
+            break;
+    }
+    return state;
 };
 
 /* Configure which keys are auto-shifted */
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
         // Left-hand home row mods
-        case HOME_A:
+        case HOME_C:
         case HOME_R:
         case HOME_S:
         case HOME_T:
@@ -295,15 +247,24 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
         case HOME_N:
         case HOME_E:
         case HOME_I:
-        case HOME_O:
+        case HOME_A:
            return true;
         default:
             return false;
     }
-}
+};
 
-/* Keyboard Post Initialization */
-void keyboard_post_init_user(void) {
-    autoshift_disable();
-    combo_disable();
+/* Configure our dip switch */
+bool dip_switch_update_mask_user(uint32_t state) { 
+    if (state & (1UL<<0) && state & (1UL<<1)) {
+        layer_on(_QWERTY);
+    } else {
+        layer_clear();
+    }
+    if (state & (1UL<<0)) {
+       layer_on(_CANARY);
+    } else {
+        layer_clear();
+    }
+    return true;
 }
