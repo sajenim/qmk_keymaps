@@ -1,7 +1,7 @@
 #pragma once
 
 // Configure the global tapping term (default: 200ms)
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
 
 // Activate the modifier when another key is pressed and released while the mod-tap is held.
 #define PERMISSIVE_HOLD
@@ -18,13 +18,4 @@
 
 // Caps Word
 #define CAPS_WORD_IDLE_TIMEOUT 5000
-
-// Leader Key
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 500
-
-// Auto Shift
-#define AUTO_SHIFT_TIMEOUT 200
-#define AUTO_SHIFT_MODIFIERS
-#define RETRO_SHIFT 500
 

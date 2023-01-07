@@ -3,13 +3,19 @@
 // Layers
 #define SPACEFN LT(_SPACEFN, KC_SPC)
 
-// Dead keys
-#define DK_MOD4 OSM(MOD_LGUI)
-#define DK_HYPR OSM(MOD_HYPR)
-#define DK_MEH  OSM(MOD_MEH)
-
 // Shortcuts
 #define DELWORD LCTL(KC_W)
+
+// One Shot Keys
+#define OS_LCTL OSM(MOD_LCTL)
+#define OS_LSFT OSM(MOD_LSFT)
+#define OS_LALT OSM(MOD_LALT)
+#define OS_LGUI OSM(MOD_LGUI)
+
+#define OS_RCTL OSM(MOD_RCTL)
+#define OS_RSFT OSM(MOD_RSFT)
+#define OS_RALT OSM(MOD_RALT)
+#define OS_RGUI OSM(MOD_RGUI)
 
 // Left-hand home row mods
 #define HOME_C  LGUI_T(KC_C)
@@ -22,3 +28,4 @@
 #define HOME_E  RSFT_T(KC_E)
 #define HOME_I  RALT_T(KC_I)
 #define HOME_A  RGUI_T(KC_A)
+
