@@ -3,9 +3,6 @@
 // Layers
 #define SPACEFN LT(_SPACEFN, KC_SPC)
 
-// Shortcuts
-#define DELWORD LCTL(KC_W)
-
 // One Shot Keys
 #define OS_LCTL OSM(MOD_LCTL)
 #define OS_LSFT OSM(MOD_LSFT)
