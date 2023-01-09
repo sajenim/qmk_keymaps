@@ -42,7 +42,6 @@ enum custom_keycodes {
 /* Define our combo keycodes */
 enum combos {
     NE_ESCAPE,
-    REPEAT_SPACE,
     COMBO_LENGTH
 };
 
@@ -51,12 +50,10 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 
 // Define key sequences
 const uint16_t PROGMEM ne_combo[] = {HOME_N, HOME_E, COMBO_END};
-const uint16_t PROGMEM repeat_space_combo[] = {OS_LALT, SPACEFN, COMBO_END};
 
 // List the combination of keys and there resulting action
 combo_t key_combos[] = {
   [NE_ESCAPE] = COMBO(ne_combo, KC_ESC),
-  [REPEAT_SPACE] = COMBO_ACTION(repeat_space_combo),
 };
 
 /* Define our keymaps */
@@ -228,13 +225,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 };
 
-/* Define the behaviour of our custom combos */ 
-void process_combo_event(uint16_t combo_index, bool pressed) {
-  switch(combo_index) {
-    case REPEAT_SPACE:
-      if (pressed) {
-        register_code(KC_SPC);
-      }
-      break;
-  }
-}
