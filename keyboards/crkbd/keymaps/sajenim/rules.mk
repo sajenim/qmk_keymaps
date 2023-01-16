@@ -1,5 +1,15 @@
-MOUSEKEY_ENABLE = yes    # Mouse keys
-RGBLIGHT_ENABLE = yes    # Enable WS2812 RGB underlight.
-OLED_ENABLE     = yes
-OLED_DRIVER     = SSD1306
-LTO_ENABLE      = yes
+# We are using a Splinky RP2040 as a drop-in replacement controller
+CONVERT_TO = promicro_rp2040
+
+# Bootloader selection
+BOOTLOADER = rp2040
+
+# Defaults
+LTO_ENABLE = yes
+SPLIT_KEYBOARD = yes
+
+# Enable some features
+CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
+LEADER_ENABLE = yes
+
