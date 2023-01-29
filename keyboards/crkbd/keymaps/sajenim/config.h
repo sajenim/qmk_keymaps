@@ -3,6 +3,10 @@
 // By default, the firmware does not know which side is which; it needs some help to determine that.
 #define MASTER_LEFT
 
+// Alternate way in QMK to enter the embedded mass storage UF2 boot-loader of the RP2040.
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
+
 // Configure the global tapping term (default: 200ms)
 #define TAPPING_TERM 200
 
