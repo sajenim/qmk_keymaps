@@ -6,7 +6,8 @@ BOOTLOADER = rp2040
 
 # Defaults
 LTO_ENABLE = yes
-SPLIT_KEYBOARD = yes
+OLED_ENABLE = no
+OLED_DRIVER = SSD1306
 
 # Enable some features
 CAPS_WORD_ENABLE = yes
