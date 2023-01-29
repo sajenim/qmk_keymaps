@@ -47,7 +47,7 @@ enum custom_keycodes {
 enum combos {
   NE_ESCAPE,
   SE_CAPSWORD,
-  DH_TMUX,
+  ST_PREFIX,
   COMBO_LENGTH
 };
 
@@ -57,13 +57,13 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 // Define key sequences
 const uint16_t PROGMEM ne_combo[] = {HOME_N, HOME_E, COMBO_END};
 const uint16_t PROGMEM se_combo[] = {HOME_S, HOME_E, COMBO_END};
-const uint16_t PROGMEM dh_combo[] = {KC_D, KC_H, COMBO_END};
+const uint16_t PROGMEM st_combo[] = {HOME_S, HOME_T, COMBO_END};
 
 // List the combination of keys and there resulting action
 combo_t key_combos[] = {
   [NE_ESCAPE] = COMBO(ne_combo, KC_ESC),
   [SE_CAPSWORD] = COMBO(se_combo, CW_TOGG),
-  [DH_TMUX] = COMBO(dh_combo, LCTL(KC_B)),
+  [ST_PREFIX] = COMBO(st_combo, LCTL(KC_B)),
 };
 
 /* Customise our keymaps */
@@ -131,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_MACRO] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         HOME, VI_SAVE, VI_EXIT, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   UPDIR,
+         HOME, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   UPDIR,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      DELWORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      DELWORD, XXXXXXX, XXXXXXX, VI_SAVE, VI_EXIT, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
