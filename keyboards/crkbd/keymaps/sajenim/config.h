@@ -7,6 +7,8 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
 
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
 // Configure the global tapping term (default: 200ms)
 #define TAPPING_TERM 200
 
@@ -22,6 +24,14 @@
 // One Shot Keys
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 2000
+
+// Auto Shift
+#define AUTO_SHIFT_TIMEOUT 175
+#define AUTO_SHIFT_REPEAT
+#define AUTO_SHIFT_MODIFIERS
+
+// Retro Shift
+#define RETRO_SHIFT 500
 
 // Caps Word
 #define CAPS_WORD_IDLE_TIMEOUT 2000

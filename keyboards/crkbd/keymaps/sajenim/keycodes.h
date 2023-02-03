@@ -38,3 +38,7 @@
 #define HOME_I  RALT_T(KC_I)
 #define HOME_A  RGUI_T(KC_A)
 
+// Shortcuts
+#define PREFIX  LCTL(KC_B)
+#define DELWORD LCTL(KC_W)
+#define ST_PSTE LSFT(KC_INSERT)
