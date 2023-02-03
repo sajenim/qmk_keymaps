@@ -23,40 +23,11 @@ enum layers {
     // Our default layouts
     _QWERTY,
     _CANARY,
-    // layouts that enable extra functionality
-    _SPACEFN,
-    _FN1,
-    _FN2,
+    // Layouts that enable extra functionality
+    _EXTEND,
 };
 
-/* Define our custom keycodes */
-enum custom_keycodes {
-    VI_SAVE = SAFE_RANGE,
-    VI_EXIT,
-    DC_MUTE,
-    DC_DFEN,
-    DELWORD,
-    UPDIR,
-};
-
-/* Define our combo keycodes */
-enum combos {
-    NE_ESCAPE,
-    COMBO_LENGTH
-};
-
-// Programmatically declare the size of the Combo data structure
-uint16_t COMBO_LEN = COMBO_LENGTH;
-
-// Define key sequences
-const uint16_t PROGMEM ne_combo[] = {HOME_N, HOME_E, COMBO_END};
-
-// List the combination of keys and there resulting action
-combo_t key_combos[] = {
-  [NE_ESCAPE] = COMBO(ne_combo, KC_ESC),
-};
-
-/* Define our keymaps */
+/* Customise our keymaps */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /**
      * Qwerty
@@ -68,20 +39,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
      * │ TAB │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ [ │ ] │  \  │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │ CAPS │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │ ENTER  │
+     * │EXTEND│ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │ ENTER  │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
      * │ LSHIFT │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │  RSHIFT  │
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │CTRL│GUI │ALT │         SPACEFN        │ALT │FN1 │FN2 │CTRL│
+     * │CTRL│GUI │ALT │          SPACE         │ALT │MEH │HYPR│CTRL│
      * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
      *
      */ 
     [_QWERTY] = LAYOUT_ansi_61(
-        KC_GRV,  KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,
+        QK_GESC, KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,
         KC_TAB,  KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,
-        CW_TOGG, KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,            KC_ENT,
+        EXTEND,  KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,            KC_ENT,
         OS_LSFT,           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,            OS_RSFT,
-        OS_LCTL, OS_LGUI,  OS_LALT,                            SPACEFN,                            OS_RALT,  MO(_FN1), MO(_FN2), OS_RCTL),
+        OS_LCTL, OS_LGUI,  OS_LALT,                            KC_SPC,                             OS_RALT,  OS_MEH,   OS_HYPR,  OS_RCTL),
 
      /**
      * Canary
@@ -94,134 +65,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
      * │ TAB │ W │ L │ Y │ P │ K │ Z │ X │ O │ U │ ; │ [ │ ] │  \  │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │ CAPS │ C │ R │ S │ T │ B │ F │ N │ E │ I │ A │ ' │ ENTER  │
+     * │EXTEND│ C │ R │ S │ T │ B │ F │ N │ E │ I │ A │ ' │ ENTER  │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
      * │ LSHIFT │ J │ V │ D │ G │ Q │ M │ H │ / │ , │ . │  RSHIFT  │
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │CTRL│GUI │ALT │         SPACEFN        │ALT │FN1 │FN2 │CTRL│
+     * │CTRL│GUI │ALT │          SPACE         │ALT │MEH │HYPR│CTRL│
      * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
-     *
-     * Credit: https://precondition.github.io/home-row-mods
      *
      */
     [_CANARY] = LAYOUT_ansi_61(
-      KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,
+      QK_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,
       KC_TAB,   KC_W,    KC_L,    KC_Y,    KC_P,    KC_K,    KC_Z,    KC_X,    KC_O,    KC_U,    KC_SCLN,  KC_LBRC,  KC_RBRC,  KC_BSLS,
-      CW_TOGG,  HOME_C,  HOME_R,  HOME_S,  HOME_T,  KC_B,    KC_F,    HOME_N,  HOME_E,  HOME_I,  HOME_A,   KC_QUOT,            KC_ENT,
+      EXTEND,   KC_C,    KC_R,    KC_S,    KC_T,    KC_B,    KC_F,    KC_N,    KC_E,    KC_I,    KC_A,     KC_QUOT,            KC_ENT,
       OS_LSFT,           KC_J,    KC_V,    KC_D,    KC_G,    KC_Q,    KC_M,    KC_H,    KC_SLSH, KC_COMM,  KC_DOT,             OS_RSFT,
-      OS_LCTL,  OS_LGUI, OS_LALT,                            SPACEFN,                            OS_RALT,  MO(_FN1), MO(_FN2), OS_RCTL),
+      OS_LCTL,  OS_LGUI, OS_LALT,                            KC_SPC,                             OS_RALT,  OS_MEH,   OS_HYPR,  OS_RCTL),
 
-    /**
-     * SPACEFN
+     /**
+     * Extend
+     * 
+     * The Extend Layer provides an additional set of mappings for your keys by defining a new "Extend" modifier key. 
+     * Holding down this key activates "Extend" mode and provides navigation and editing functions.
      *
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │../│F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│DELWORD│
+     * │LDR│F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│ SLEEP │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │     │:w │:q!│PUP│PDN│   │   │HOM│END│   │   │   │   │     │
+     * │     │   │   │   │   │   │   │HOM│PDN│PUP│END│   │   │     │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │      │GUI│ALT│SFT│CTL│   │   │LFT│DWN│UP │RGT│   │ INSERT │
+     * │      │GUI│ALT│SFT│CTL│   │   │LFT│DWN│UP │RGT│DEL│        │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
-     * │        │   │   │BAK│   │   │   │DEL│   │   │   │          │
-     * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │    │    │    │                        │    │    │    │    │
-     * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
-     *
-     * Credit: https://geekhack.org/index.php?topic=51069.0
-     *
-     */
-    [_SPACEFN] = LAYOUT_ansi_61(
-      UPDIR,    KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,   DELWORD,
-      XXXXXXX,  VI_SAVE,  VI_EXIT, KC_PGUP, KC_PGDN, XXXXXXX, XXXXXXX, KC_HOME, KC_END,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-      XXXXXXX,  KC_LGUI,  KC_LALT, KC_LSFT, KC_LCTL, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, XXXXXXX,            KC_INS,
-      XXXXXXX,            XXXXXXX, XXXXXXX, KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
-      XXXXXXX,  XXXXXXX,  XXXXXXX,                            XXXXXXX,                            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
-
-    /**
-     * Function 1
-     *
-     * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │   │MUT│DFN│VUP│VDN│HOM│BAK│FWD│REF│PLY│STP│PRV│NXT│ SLEEP │
-     * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │     │   │   │   │   │   │   │   │   │   │   │   │   │     │
-     * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │      │   │   │   │   │   │   │   │   │   │   │   │        │
-     * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
-     * │        │   │   │   │   │   │   │   │   │   │   │          │
+     * │        │   │   │   │   │   │   │BAK│   │   │   │          │
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
      * │    │    │    │                        │    │    │    │    │
      * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
      *
      */
-    [_FN1] = LAYOUT_ansi_61(
-      XXXXXXX,  DC_MUTE,  DC_DFEN, KC_VOLU, KC_VOLD, KC_WHOM, KC_WBAK, KC_WFWD, KC_WREF, KC_MPLY, KC_MSTP,  KC_MPRV,  KC_MNXT,  KC_SLEP,
-      XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-      XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
-      XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
+    [_EXTEND] = LAYOUT_ansi_61(
+      QK_BOOT,  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,   KC_SLEP,
+      XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,  OS_LGUI,  OS_LALT, OS_LSFT, OS_LCTL, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  KC_DEL,             XXXXXXX,
+      XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
       XXXXXXX,  XXXXXXX,  XXXXXXX,                            XXXXXXX,                            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
-
-    /**
-     * Function 2
-     *
-     * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-     * │   │X01│X02│X03│X04│X05│X06│X07│X08│X09│X10│X11│X12│BOOTLDR│
-     * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-     * │     │   │   │   │   │   │   │   │   │   │   │   │   │     │
-     * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
-     * │      │   │   │   │   │   │   │   │   │   │   │   │        │
-     * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤
-     * │        │   │   │   │   │   │   │   │   │   │   │          │
-     * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-     * │    │    │    │                        │    │    │    │    │
-     * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
-     *
-     */
-    [_FN2] = LAYOUT_ansi_61(
-      XXXXXXX,  PB_1,     PB_2,    PB_3,    PB_4,    PB_5,    PB_6,    PB_7,    PB_8,    PB_9,    PB_10,    PB_11,    PB_12,    QK_BOOT,
-      XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-      XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
-      XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,            XXXXXXX,
-      XXXXXXX,  XXXXXXX,  XXXXXXX,                            XXXXXXX,                            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
-};
-
-/* Define the behaviour of our custom keycodes */
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case VI_SAVE:
-        if (record->event.pressed) {
-            tap_code(KC_ESC);
-            SEND_STRING(":w");
-            tap_code(KC_ENT);
-        }
-        break;
-    case VI_EXIT:
-        if (record->event.pressed) {
-            tap_code(KC_ESC);
-            SEND_STRING(":q!");
-            tap_code(KC_ENT);
-        }
-        break;
-    case DC_MUTE:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL(SS_LSFT("m"))); 
-        }
-        break;
-    case DC_DFEN:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL(SS_LSFT("d"))); 
-        }
-        break;
-    case DELWORD:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("w"));
-        }
-        break;
-    case UPDIR:
-        if (record->event.pressed) {
-            SEND_STRING("cd ../");
-            tap_code(KC_ENT);
-        }
-        break;
-    }
-    return true;
 };
 
