@@ -42,8 +42,8 @@ enum custom_keycodes {
 };
 
 enum td_keycodes {
-  TD_YANK,
-  TD_PSTE
+  YANK,
+  PSTE
 };
 
 enum combos {
@@ -102,7 +102,7 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_CANARY] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       PREFIX,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, XXXXXXX,
+      PREFIX,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U,  KC_QUOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,  HOME_C,  HOME_R,  HOME_S,  HOME_T,    KC_G,                         KC_M,  HOME_N,  HOME_E,  HOME_I,  HOME_A,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -409,12 +409,12 @@ void yank_finished(qk_tap_dance_state_t *state, void *user_data) {
     td_state = cur_dance(state);
     switch (td_state) {
         case TD_SINGLE_TAP:
-            register_code(KC_LCTL);
+            register_mods(MOD_BIT(KC_LCTL));
             register_code(KC_C);
             break;
         case TD_DOUBLE_TAP:
-            register_code(KC_LCTL);
-            register_code(KC_LSFT);
+            register_mods(MOD_BIT(KC_LCTL));
+            register_mods(MOD_BIT(KC_LSFT));
             register_code(KC_C);
             break;
         default:
@@ -425,12 +425,12 @@ void yank_finished(qk_tap_dance_state_t *state, void *user_data) {
 void yank_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (td_state) {
         case TD_SINGLE_TAP:
-            unregister_code(KC_LCTL);
+            unregister_mods(MOD_BIT(KC_LCTL));
             unregister_code(KC_C);
             break;
         case TD_DOUBLE_TAP:
-            unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_mods(MOD_BIT(KC_LCTL));
+            unregister_mods(MOD_BIT(KC_LSFT));
             unregister_code(KC_C);
             break;
         default:
@@ -442,12 +442,12 @@ void pste_finished(qk_tap_dance_state_t *state, void *user_data) {
     td_state = cur_dance(state);
     switch (td_state) {
         case TD_SINGLE_TAP:
-            register_code(KC_LCTL);
+            register_mods(MOD_BIT(KC_LCTL));
             register_code(KC_V);
             break;
         case TD_DOUBLE_TAP:
-            register_code(KC_LCTL);
-            register_code(KC_LSFT);
+            register_mods(MOD_BIT(KC_LCTL));
+            register_mods(MOD_BIT(KC_LSFT));
             register_code(KC_V);
             break;
         default:
@@ -458,12 +458,12 @@ void pste_finished(qk_tap_dance_state_t *state, void *user_data) {
 void pste_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (td_state) {
         case TD_SINGLE_TAP:
-            unregister_code(KC_LCTL);
+            unregister_mods(MOD_BIT(KC_LCTL));
             unregister_code(KC_V);
             break;
         case TD_DOUBLE_TAP:
-            unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_mods(MOD_BIT(KC_LCTL));
+            unregister_mods(MOD_BIT(KC_LSFT));
             unregister_code(KC_V);
             break;
         default:
@@ -473,8 +473,8 @@ void pste_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 // Define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_YANK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, yank_finished, yank_reset),
-    [TD_PSTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, pste_finished, pste_reset)
+    [YANK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, yank_finished, yank_reset),
+    [PSTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, pste_finished, pste_reset)
 };
 
 
@@ -511,7 +511,9 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 /* Layer Change */
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, L_LOWER, L_RAISE, L_ADJUST);
+    state = update_tri_layer_state(state, L_NUMBERS, L_SYMBOLS, L_OPERATORS);
+    state = update_tri_layer_state(state, L_LOWER, L_RAISE, L_ADJUST);
+    return state;
 }
 
 

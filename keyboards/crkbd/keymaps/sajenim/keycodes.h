@@ -26,6 +26,10 @@
 #define OS_RALT OSM(MOD_RALT)
 #define OS_RGUI OSM(MOD_RGUI)
 
+// Tap Dance
+#define TD_YANK TD(YANK)
+#define TD_PSTE TD(PSTE)
+
 // Left-hand home row mods
 #define HOME_C  LGUI_T(KC_C)
 #define HOME_R  LALT_T(KC_R)
