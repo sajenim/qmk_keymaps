@@ -24,3 +24,8 @@
 #define DEPCLEAN  "sudo emerge --ask --depclean"
 #define UPGRADE   "sudo emerge --ask --update --deep --newuse --with-bdeps=y @world"
 
+/* Expansion */
+#define GM        "Goodmorning friends, I hope we all have/had a wonderfull day. :sunflower:"
+#define GN        "Well i think it's time to hit the hay, farewell comrades. :sleeping:"
+#define RTFM      "Read the fucking manual! :pepedumb:"
+

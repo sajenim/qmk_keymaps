@@ -43,7 +43,18 @@ void matrix_scan_user(void) {
     SEQ_THREE_KEYS(KC_E, KC_U, KC_U) {
       SEND_STRING(UPGRADE);
     }
-    
+   
+    /* Expansion */
+    SEQ_TWO_KEYS(KC_G, KC_M) {
+      SEND_STRING(GM);
+    }
+    SEQ_TWO_KEYS(KC_G, KC_N) {
+      SEND_STRING(GN);
+    }
+    SEQ_FOUR_KEYS(KC_R, KC_T, KC_F, KC_M) {
+      SEND_STRING(RTFM);
+    }
+
     /* Secrets */
     SEQ_TWO_KEYS(KC_A, KC_H) {
       SEND_STRING(ADDRESS);
