@@ -1,8 +1,5 @@
 // This file contains user defined aliases
 
-// Layers
-#define EXTEND  MO(L_EXTEND)
-
 // One Shot Keys
 #define OS_LCTL OSM(MOD_LCTL)
 #define OS_LSFT OSM(MOD_LSFT)
