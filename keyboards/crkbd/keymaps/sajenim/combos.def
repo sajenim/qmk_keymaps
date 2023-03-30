@@ -1,23 +1,12 @@
-/* Copyright 2022 @ sajenim (https://github.com/sajenim)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+//   name       result   chord keys
+COMB(DF_TAB,    KC_TAB,  KC_D, KC_F)
+COMB(JK_ESC,    KC_ESC,  KC_J, KC_K)
+SUBS(RT_HOME,   "~/",    KC_R, KC_T)
+SUBS(YU_UPDIR,  "../",   KC_Y, KC_U)
 
-//#include "dictionaries/emerge.def"
-
-//   name         result   chord keys
-COMB(NE_ESCAPE,   KC_ESC,  HOME_N, HOME_E)
-COMB(SE_CAPSWRD,  CW_TOGG, HOME_S, HOME_E) 
+//   name           result  chord keys
+SUBS(VI_WRITE,      ":w",   KC_SCLN, KC_W      )
+SUBS(VI_QUIT,       ":q",   KC_SCLN, KC_Q      )
+SUBS(VI_WRITE_QUIT, ":wq",  KC_SCLN, KC_W, KC_Q)
 
 /* vim: set filetype=c : */

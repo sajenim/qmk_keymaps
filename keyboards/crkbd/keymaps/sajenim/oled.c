@@ -1,22 +1,5 @@
-/* Copyright 2022 @ sajenim (https://github.com/sajenim)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include QMK_KEYBOARD_H
 #include <stdio.h>
-#include "oled.h"
 #include "layers.h"
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -31,6 +14,9 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 void oled_render_master(void) {
     // Layer Status
     switch (get_highest_layer(layer_state)) {
+      case L_QWERTY:
+          oled_write("QWRTY", false);
+          break;
       case L_CANARY:
           oled_write("CANRY", false);
           break;
@@ -43,20 +29,8 @@ void oled_render_master(void) {
       case L_ADJUST:
           oled_write("ADJST", false);
           break;
-      case L_NAVIGATION:
-          oled_write_ln(" NAV", false);
-          break;
-      case L_SYMBOLS:
-          oled_write_ln(" SYM", false);
-          break;
-      case L_NUMBERS:
-          oled_write_ln(" NUM", false);
-          break;
-      case L_OPERATORS:
-          oled_write("OPER8", false);
-          break;
-      case L_MACRO:
-          oled_write("MACRO", false);
+      case L_EXTEND:
+          oled_write("EXTND", false);
           break;
       default:
           oled_write_ln(" UND", false);
