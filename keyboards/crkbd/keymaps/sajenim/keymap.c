@@ -50,25 +50,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_EXTEND] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL, BSPC_DW,
+      _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, KC_COLN,
+      _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
+         KC_5,    KC_4,    KC_3,    KC_2,    KC_1,    KC_0,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX, XXXXXXX,    WZ_CMOD, WZ_COPY, WZ_PSTE
+                                          XXXXXXX, XXXXXXX, XXXXXXX,    _______, WZ_CMOD, WZ_PSTE
                                       //`--------------------------'  `--------------------------'
   ),
 
   [L_LOWER] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_VOLU, KC_MNXT,   KC_F7,   KC_F8,   KC_F9,  KC_F10,                      KC_SLSH,    KC_7,    KC_8,    KC_9, KC_MINS,  KC_PWR,
+      KC_VOLU, KC_MNXT,   KC_F7,   KC_F8,   KC_F9,  KC_F10,                      KC_SLSH,    KC_7,    KC_8,    KC_9, KC_MINS, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_VOLD, KC_MPRV,   KC_F4,   KC_F5,   KC_F6,  KC_F11,                      KC_ASTR,    KC_4,    KC_5,    KC_6, KC_PLUS, KC_SLEP,
+      KC_VOLD, KC_MPRV,   KC_F4,   KC_F5,   KC_F6,  KC_F11,                      KC_ASTR,    KC_4,    KC_5,    KC_6, KC_PLUS,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_MUTE, KC_MPLY,   KC_F1,   KC_F2,   KC_F3,  KC_F12,                         KC_0,    KC_1,    KC_2,    KC_3,  KC_DOT, KC_WAKE,
+      KC_MUTE, KC_MPLY,   KC_F1,   KC_F2,   KC_F3,  KC_F12,                         KC_0,    KC_1,    KC_2,    KC_3,  KC_DOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______, XXXXXXX,    CK_LOCK, _______, XXXXXXX
+                                          CK_LOCK, _______, XXXXXXX,    _______, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -80,17 +80,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, XXXXXXX, KC_COLN, KC_ASTR, KC_PLUS, XXXXXXX,                      XXXXXXX, KC_AMPR, KC_CIRC, KC_TILD, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______, CK_LOCK,    XXXXXXX, _______, XXXXXXX
+                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, CK_LOCK
                                       //`--------------------------'  `--------------------------'
   ),
 
   [L_ADJUST] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT, xQWERTY, xCANARY, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, AS_TOGG,
+      QK_BOOT, xQWERTY, xCANARY, XXXXXXX, XXXXXXX, AS_TOGG,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_PWR,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, AC_TOGG,
+      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, AC_TOGG,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CM_TOGG,
+      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, CM_TOGG,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
