@@ -1,10 +1,9 @@
 //   name       result   chord keys
-COMB(DF_TAB,    KC_TAB,  KC_D, KC_F)
+COMB(DF_GAME,   GM_TOGG, KC_D, KC_F)
 COMB(JK_ESC,    KC_ESC,  KC_J, KC_K)
 COMB(DK_CAPS,   CW_TOGG, KC_D, KC_K)
-COMB(OP_GAME,   GM_TOGG, KC_O, KC_P)
-SUBS(RT_HOME,   "~/",    KC_R, KC_T)
-SUBS(YU_UPDIR,  "../",   KC_Y, KC_U)
+SUBS(ER_HOME,   "~/",    KC_E, KC_R)
+SUBS(UI_UPDIR,  "../",   KC_U, KC_I)
 
 
 //   name           result  chord keys
