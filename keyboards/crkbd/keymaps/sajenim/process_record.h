@@ -37,6 +37,10 @@ enum custom_keycodes {
 #define WZ_CMOD LCTL(LSFT(KC_X))
 #define WZ_PSTE LCTL(LSFT(KC_V))
 
+// Gaming
+#define GM_TOGG TG(L_GAMING)
+#define GAME_FN MO(L_GAMEFN)
+
 // Misc
 #define TABCTRL MT(MOD_LCTL, KC_TAB)
 #define BSPC_DW MT(MOD_LCTL, KC_BSPC)

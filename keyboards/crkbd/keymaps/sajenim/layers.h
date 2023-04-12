@@ -6,5 +6,7 @@ enum layers {
   L_LOWER,
   L_RAISE,
   L_ADJUST,
+  L_GAMING,
+  L_GAMEFN,
 };
 
