@@ -134,5 +134,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 void keyboard_post_init_user(void) {
     autoshift_disable();
-    autocorrect_enable();
+    autocorrect_disable();
+    combo_disable();
+    sentence_case_off();
 }
