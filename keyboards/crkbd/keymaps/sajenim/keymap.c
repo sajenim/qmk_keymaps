@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include "config.h"
 #include "layers.h"
+#include "features/sentence_case.h"
 #include "process_record.h"
 #include "g/keymap_combo.h"
 
