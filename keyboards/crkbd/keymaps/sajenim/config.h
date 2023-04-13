@@ -29,6 +29,11 @@
 #define COMBO_TERM 50
 #define COMBO_ONLY_FROM_LAYER 0
 
+// Data Sync
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_MODS_ENABLE
+#define SPLIT_WPM_ENABLE
+
 // RGB
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SLEEP
