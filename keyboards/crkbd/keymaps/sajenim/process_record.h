@@ -6,6 +6,7 @@
 enum custom_keycodes {
   CK_LOCK = SAFE_RANGE,
   BSPC_DW,
+  SC_TOGG,
 };
 
 // Left-hand thumb key layers

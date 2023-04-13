@@ -43,6 +43,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
+        case SC_TOGG:
+            if (record->event.pressed) {
+                sentence_case_toggle();
+            }
+            return false;
+
         /* KEYBOARD PET STATUS START */
         case TABCTRL:
         case KC_LCTL:
