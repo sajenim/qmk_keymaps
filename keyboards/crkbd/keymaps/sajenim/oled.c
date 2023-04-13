@@ -172,13 +172,6 @@ void oled_render_master(void) {
     oled_write("sc: .", false);
   }
 
-  bool caps_word_enabled = is_caps_word_on();
-  if (caps_word_enabled) {
-    oled_write("cw: *", false);
-  } else {
-    oled_write("cw: .", false);
-  }
-
   // Render Pet
   render_luna(0, 13);
 }
