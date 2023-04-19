@@ -36,6 +36,7 @@ enum custom_keycodes {
 
 // Shortcuts
 #define WZ_CMOD LCTL(LSFT(KC_X))
+#define WZ_COPY LCTL(LSFT(KC_C))
 #define WZ_PSTE LCTL(LSFT(KC_V))
 
 // Gaming
