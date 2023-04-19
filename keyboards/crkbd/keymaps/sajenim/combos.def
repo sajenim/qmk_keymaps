@@ -2,11 +2,12 @@
 COMB(DF_GAME,   GM_TOGG, KC_D, KC_F)
 COMB(JK_ESC,    KC_ESC,  KC_J, KC_K)
 COMB(DK_CAPS,   CW_TOGG, KC_D, KC_K)
+
+// unix shell
 SUBS(ER_HOME,   "~/",    KC_E, KC_R)
 SUBS(UI_UPDIR,  "../",   KC_U, KC_I)
 
-
-//   name           result  chord keys
+// neovim
 SUBS(VI_WRITE,      ":w",   KC_SCLN, KC_W      )
 SUBS(VI_QUIT,       ":q",   KC_SCLN, KC_Q      )
 SUBS(VI_WRITE_QUIT, ":wq",  KC_SCLN, KC_W, KC_Q)
