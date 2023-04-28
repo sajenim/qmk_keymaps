@@ -41,7 +41,6 @@ enum custom_keycodes {
 
 // Gaming
 #define GM_TOGG TG(L_GAMING)
-#define GAME_FN MO(L_GAMEFN)
 
 // Misc
 #define TABCTRL MT(MOD_LCTL, KC_TAB)
