@@ -4,8 +4,7 @@
 
 // Our custom keycodes
 enum custom_keycodes {
-  CK_LOCK = SAFE_RANGE,
-  BSPC_DW,
+  BSPC_DW = SAFE_RANGE,
   SC_TOGG,
 };
 
@@ -16,7 +15,7 @@ enum custom_keycodes {
 
 // Right-hand thumb key layers
 #define ENT_SFT MT(MOD_LSFT, KC_ENT)
-#define DEL_RSE LT(L_RAISE,  KC_DEL)
+#define DEL_UPR LT(L_UPPER,  KC_DEL)
 #define ALT_EXT LT(L_EXTEND, KC_LALT)
 
 // One Shot Keys
@@ -30,17 +29,10 @@ enum custom_keycodes {
 #define OS_RALT OSM(MOD_RALT)
 #define OS_RGUI OSM(MOD_RGUI)
 
-// Default Layers
-#define xQWERTY DF(L_QWERTY)
-#define xCANARY DF(L_CANARY)
-
 // Shortcuts
 #define WZ_CMOD LCTL(LSFT(KC_X))
 #define WZ_COPY LCTL(LSFT(KC_C))
 #define WZ_PSTE LCTL(LSFT(KC_V))
-
-// Gaming
-#define GM_TOGG TG(L_GAMING)
 
 // Misc
 #define TABCTRL MT(MOD_LCTL, KC_TAB)

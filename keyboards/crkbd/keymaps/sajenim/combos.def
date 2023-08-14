@@ -1,15 +1,10 @@
 //   name       result   chord keys
-COMB(DF_GAME,   GM_TOGG, KC_D, KC_F)
-COMB(JK_ESC,    KC_ESC,  KC_J, KC_K)
-COMB(DK_CAPS,   CW_TOGG, KC_D, KC_K)
+COMB(NE_ESC,    KC_ESC,  KC_N, KC_E)
+COMB(SE_CAPS,   CW_TOGG, KC_S, KC_E)
 
 // unix shell
-SUBS(ER_HOME,   "~/",    KC_E, KC_R)
-SUBS(UI_UPDIR,  "../",   KC_U, KC_I)
-
-// neovim
-SUBS(VI_WRITE,      ":w",   KC_SCLN, KC_W      )
-SUBS(VI_QUIT,       ":q",   KC_SCLN, KC_Q      )
-SUBS(VI_WRITE_QUIT, ":wq",  KC_SCLN, KC_W, KC_Q)
+SUBS(YP_HOME,   "~/",    KC_Y, KC_P)
+SUBS(FO_UPDIR,  "../",   KC_F, KC_O)
 
 /* vim: set filetype=c : */
+

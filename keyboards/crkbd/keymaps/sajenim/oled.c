@@ -15,14 +15,13 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 void oled_render_master(void) {
   // Layer Status
   switch (get_highest_layer(layer_state)) {
-  case L_QWERTY:
   case L_CANARY:
     oled_write(" BAS ", false);
     break;
   case L_LOWER:
     oled_write(" LWR ", false);
     break;
-  case L_RAISE:
+  case L_UPPER:
     oled_write(" RSE ", false);
     break;
   case L_ADJUST:
@@ -30,10 +29,6 @@ void oled_render_master(void) {
     break;
   case L_EXTEND:
     oled_write(" EXT ", false);
-    break;
-  case L_GAMING:
-  case L_GAMEFN:
-    oled_write(" GME ", false);
     break;
   default:
     oled_write(" UND ", false);

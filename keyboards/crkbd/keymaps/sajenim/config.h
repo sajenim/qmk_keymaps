@@ -22,12 +22,8 @@
 // Caps Word
 #define CAPS_WORD_IDLE_TIMEOUT 2000
 
-// Layer Lock
-#define LAYER_LOCK_IDLE_TIMEOUT 60000
-
 // Combos
 #define COMBO_TERM 50
-#define COMBO_ONLY_FROM_LAYER 0
 
 // RGB
 #ifdef RGBLIGHT_ENABLE

@@ -8,14 +8,13 @@ LTO_ENABLE = yes
 # Optional features
 OLED_ENABLE 				= yes
 RGBLIGHT_ENABLE			= yes
-COMBO_ENABLE 				= yes
 # Toggleable through keymap
 AUTO_SHIFT_ENABLE		= yes
 AUTOCORRECT_ENABLE	= yes
 CAPS_WORD_ENABLE  	= yes
+COMBO_ENABLE 				= yes
 
 SRC += process_record.c
-SRC += features/layer_lock.c
 SRC += features/sentence_case.c
 
 ifeq ($(OLED_ENABLE),yes)

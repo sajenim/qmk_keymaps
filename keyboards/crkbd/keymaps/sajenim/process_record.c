@@ -1,11 +1,9 @@
 #include "process_record.h"
 #include "layers.h"
 #include "oled.h"
-#include "features/layer_lock.h"
 #include "features/sentence_case.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_layer_lock(keycode, record, CK_LOCK)) { return false; }
     if (!process_sentence_case(keycode, record)) { return false; }
     
     switch (keycode) {
@@ -48,28 +46,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 sentence_case_toggle();
             }
             return false;
-
-        /* KEYBOARD PET STATUS START */
-        case TABCTRL:
-        case KC_LCTL:
-        case KC_RCTL:
-            if (record->event.pressed) {
-                isSneaking = true;
-            } else {
-                isSneaking = false;
-            }
-            break;
-
-        case SPC_EXT:
-        case KC_SPC:
-            if (record->tap.count && record->event.pressed) {
-                isJumping = true;
-                showedJump = false;
-            } else {
-                isJumping = false;
-            }
-            break;
-    /* KEYBOARD PET STATUS END */
   }
   return true;
 };
