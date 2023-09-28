@@ -1,6 +1,5 @@
 #include "process_record.h"
 #include "layers.h"
-#include "oled.h"
 #include "features/sentence_case.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
