@@ -19,7 +19,7 @@ SRC += features/sentence_case.c
 
 ifeq ($(OLED_ENABLE),yes)
 	SRC += ./oled.c
-	OLED_DRIVER = SSD1306
+	OLED_DRIVER = ssd1306
 	WPM_ENABLE = yes
 endif
 
