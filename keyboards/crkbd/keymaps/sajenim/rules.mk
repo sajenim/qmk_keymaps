@@ -8,6 +8,8 @@ LTO_ENABLE = yes
 # Optional features
 OLED_ENABLE 				= yes
 RGBLIGHT_ENABLE			= yes
+REPEAT_KEY_ENABLE		= yes
+LEADER_ENABLE				= yes
 # Toggleable through keymap
 AUTO_SHIFT_ENABLE		= yes
 AUTOCORRECT_ENABLE	= yes

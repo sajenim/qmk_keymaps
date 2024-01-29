@@ -9,14 +9,12 @@ enum custom_keycodes {
 };
 
 // Left-hand thumb key layers
-#define GUI_EXT LT(L_EXTEND, KC_LGUI)
 #define BAK_LWR LT(L_LOWER,  KC_BSPC)
 #define SPC_EXT LT(L_EXTEND, KC_SPC)
 
 // Right-hand thumb key layers
 #define ENT_SFT MT(MOD_LSFT, KC_ENT)
 #define DEL_UPR LT(L_UPPER,  KC_DEL)
-#define ALT_EXT LT(L_EXTEND, KC_LALT)
 
 // One Shot Keys
 #define OS_LCTL OSM(MOD_LCTL)
