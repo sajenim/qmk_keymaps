@@ -5,6 +5,9 @@
 // Our custom keycodes
 enum custom_keycodes {
   BSPC_DW = SAFE_RANGE,
+  // Additional, distinct "Alternate Repeat"-like keys.
+  ALTREP2 = SAFE_RANGE,
+  ALTREP3,
   SC_TOGG,
 };
 
