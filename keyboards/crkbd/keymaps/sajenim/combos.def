@@ -2,7 +2,6 @@
 
 //   name       result      chord keys
 COMB(NE_ESC,    KC_ESC,     KC_N, KC_E)
-COMB(SE_CAPS,   CW_TOGG,    KC_S, KC_E)
 SUBS(YP_HOME,   "~/",       KC_Y, KC_P)
 SUBS(FO_UPDIR,  "../",      KC_F, KC_O)
 
