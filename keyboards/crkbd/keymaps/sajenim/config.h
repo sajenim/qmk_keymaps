@@ -32,6 +32,7 @@
 // Leader key
 #define LEADER_TIMEOUT 500
 #define LEADER_PER_KEY_TIMING
+
 // RGB
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SLEEP
