@@ -106,9 +106,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return state;
 }
 
+
 /* Post Init */
 
 void keyboard_post_init_user(void) {
+    // Disable optional features on reboot
     autoshift_disable();
     autocorrect_disable();
     combo_disable();
