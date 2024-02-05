@@ -1,5 +1,4 @@
 #include "process_record.h"
-#include "layers.h"
 #include "features/sentence_case.h"
 
 // Define the behaviour of our custom keycodes
