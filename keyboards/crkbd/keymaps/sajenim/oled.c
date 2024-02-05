@@ -3,6 +3,7 @@
 #include "layers.h"
 #include <stdio.h>
 
+// Declare screen rotation for each half
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (is_keyboard_master()) {
     return OLED_ROTATION_270;
@@ -12,6 +13,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return rotation;
 }
 
+// Setup the master screen
 void oled_render_master(void) {
   // Layer Status
   switch (get_highest_layer(layer_state)) {
@@ -104,6 +106,7 @@ void oled_render_master(void) {
 }
 
 
+// Corne keyboard logo
 void oled_render_logo(void) {
     static const char PROGMEM crkbd_logo[] = {
         0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
@@ -113,6 +116,7 @@ void oled_render_logo(void) {
     oled_write_P(crkbd_logo, false);
 }
 
+// Render our screens
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
     oled_render_master();
