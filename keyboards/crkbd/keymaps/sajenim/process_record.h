@@ -7,6 +7,7 @@ enum custom_keycodes {
   // Additional, distinct "Alternate Repeat"-like keys.
   ALTREP2 = SAFE_RANGE,
   ALTREP3,
+  // Toggle Sentence case
   SC_TOGG,
 };
 
@@ -17,7 +18,7 @@ enum custom_keycodes {
 #define BAK_LWR LT(L_LOWER, KC_BSPC)
 #define DEL_RSE LT(L_RAISE, KC_DEL)
 
-// One Shot Keys
+// One shot keys
 #define OS_LCTL OSM(MOD_LCTL)
 #define OS_LSFT OSM(MOD_LSFT)
 #define OS_LALT OSM(MOD_LALT)
