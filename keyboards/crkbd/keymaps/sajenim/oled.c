@@ -32,6 +32,9 @@ void oled_render_master(void) {
   case L_EXTEND:
     oled_write(" EXT ", false);
     break;
+  case L_MACRO:
+    oled_write(" MAC ", false);
+    break;
   default:
     oled_write(" UND ", false);
   }
