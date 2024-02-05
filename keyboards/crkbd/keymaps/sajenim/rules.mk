@@ -28,3 +28,8 @@ endif
 ifeq ($(COMBO_ENABLE),yes)
 	VPATH += keyboards/gboards
 endif
+
+# Leader key dictionary
+ifeq ($(LEADER_ENABLE),yes)
+	SRC += ./leader.c
+endif
