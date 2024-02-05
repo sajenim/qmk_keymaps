@@ -4,7 +4,6 @@
 
 // Our custom keycodes
 enum custom_keycodes {
-  BSPC_DW = SAFE_RANGE,
   // Additional, distinct "Alternate Repeat"-like keys.
   ALTREP2 = SAFE_RANGE,
   ALTREP3,
@@ -31,6 +30,7 @@ enum custom_keycodes {
 #define OS_RGUI OSM(MOD_RGUI)
 
 // Shortcuts
+#define DELWORD LCTL(KC_W)
 #define WZ_CMOD LCTL(LSFT(KC_X))
 #define WZ_COPY LCTL(LSFT(KC_C))
 #define WZ_PSTE LCTL(LSFT(KC_V))
