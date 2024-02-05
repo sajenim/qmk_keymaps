@@ -23,7 +23,7 @@ void oled_render_master(void) {
   case L_LOWER:
     oled_write(" LWR ", false);
     break;
-  case L_UPPER:
+  case L_RAISE:
     oled_write(" RSE ", false);
     break;
   case L_ADJUST:
