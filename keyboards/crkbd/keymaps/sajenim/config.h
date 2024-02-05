@@ -9,6 +9,9 @@
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
+// Enable QK_MAKE keycode
+#define ENABLE_COMPILE_KEYCODE
+
 // Tap-Hold Configuration Options
 #define TAPPING_TERM 200
 
