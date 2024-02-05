@@ -23,6 +23,7 @@
 #define AUTO_SHIFT_TIMEOUT 175
 
 // Caps Word
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDLE_TIMEOUT 2000
 
 // Combos
