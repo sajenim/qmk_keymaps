@@ -11,10 +11,12 @@ enum custom_keycodes {
   SC_TOGG,
 };
 
-// Dual role keys
+/* Dual role keys */
 #define SPACEFN LT(L_EXTEND, KC_SPC)
-#define ENTERFN LT(L_MACRO, KC_ENT)
+// mod-tap
 #define TABCTRL MT(MOD_LCTL, KC_TAB)
+#define ENT_SFT MT(MOD_RSFT, KC_ENT)
+// layer-tap
 #define BAK_LWR LT(L_LOWER, KC_BSPC)
 #define DEL_RSE LT(L_RAISE, KC_DEL)
 
