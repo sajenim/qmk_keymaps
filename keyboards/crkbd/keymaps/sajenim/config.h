@@ -12,26 +12,11 @@
 // Enable QK_MAKE keycode
 #define ENABLE_COMPILE_KEYCODE
 
-// Tap-Hold Configuration Options
-#define TAPPING_TERM 200
-
-// One Shot Keys
-#define ONESHOT_TAP_TOGGLE 3
-#define ONESHOT_TIMEOUT 2000
-
-// Auto Shift
-#define AUTO_SHIFT_TIMEOUT 175
-
-// Caps Word
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-#define CAPS_WORD_IDLE_TIMEOUT 2000
-
-// Combos
-#define COMBO_TERM 50
-
-// Leader key
-#define LEADER_TIMEOUT 500
-#define LEADER_PER_KEY_TIMING
+// Tap-Hold configuration for home row mods.
+#define TAPPING_TERM 175  // time window in which you need to release the key in order to register a tap
+#define PERMISSIVE_HOLD   // activates the modifier when another key is pressed and released while the mod-tap is held, regardless of the tapping term
+#define QUICK_TAP_TERM 0  // disable the auto-repeat feature entirely
+#define ACHORDION_STREAK  // disables hold behaviors when in a typing streak
 
 // RGB
 #ifdef RGBLIGHT_ENABLE

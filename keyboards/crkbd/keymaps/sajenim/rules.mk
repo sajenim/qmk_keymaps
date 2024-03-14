@@ -10,22 +10,18 @@ AUTOCORRECT_ENABLE		= yes
 AUTO_SHIFT_ENABLE			= yes
 CAPS_WORD_ENABLE			= yes
 COMBO_ENABLE					= yes
-DYNAMIC_MACRO_ENABLE	= yes
-LEADER_ENABLE					= yes
-MOUSEKEY_ENABLE				= yes
 OLED_ENABLE						= yes
 REPEAT_KEY_ENABLE			= yes
 RGBLIGHT_ENABLE				= yes
 
+
 # Feature libraries
 SRC += features/sentence_case.c
-
-# Behaviour of our custom keycodes
-SRC += process_record.c
+SRC += features/achordion.c
+SRC += features/select_word.c
 
 # Oled display configuration
 ifeq ($(OLED_ENABLE),yes)
-	SRC += ./oled.c
 	OLED_DRIVER = ssd1306
 	WPM_ENABLE = yes
 endif
@@ -35,7 +31,3 @@ ifeq ($(COMBO_ENABLE),yes)
 	VPATH += keyboards/gboards
 endif
 
-# Leader key dictionary
-ifeq ($(LEADER_ENABLE),yes)
-	SRC += ./leader.c
-endif
