@@ -1,14 +1,18 @@
 # QMK Keymaps
 
-Personal keymaps for programmable keyboards.
+Personal keymaps for programmable keyboards. I currently use [canary](https://github.com/Apsu/Canary) layout and am working on implementing a [magic](https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md) key to minimize SFB and improve flow.
 
 ## Keyboards
-- [Keychron Q4](https://www.keychron.com/products/keychron-q4-qmk-via-custom-mechanical-keyboard)
+- [Keychron Q4](https://www.keychron.com/products/keychron-q4-qmk-via-custom-mechanical-keyboard):
+My gateway to QMK, 60% hotswappable with CNC machined body, i still use this for gaming and to retain qwerty muscle memory.
 - [Corne Cherry](https://github.com/foostan/crkbd)
+My intro to building keyboards, 3x6 column stagger with 3 thumb keys. This keyboard got me into alt layouts and 3D printing (case).
 
-## In Progress
-- [Void30](https://github.com/victorlucachi/void30)
-- [Dactyl Manuform](https://github.com/abstracthat/dactyl-manuform)
+## Todo
+- [Gerkin](https://www.40percent.club/2016/11/gherkin.html):
+30 key keyboard by the 40% club
+- [Dactyl Manuform](https://github.com/abstracthat/dactyl-manuform):
+The dactyl manuform is a parameterized, split-hand, concave, columnar, ergonomic keyboard.
 
 ## Keymaps
 
