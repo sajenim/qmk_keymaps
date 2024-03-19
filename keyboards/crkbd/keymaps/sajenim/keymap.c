@@ -40,6 +40,10 @@ enum custom_keycodes {
   SELWORD,
 };
 
+// This keymap uses Magic Canary, it is inspired by Ikcelaks' Magic Sturdy layout.
+// The magic key is triggered with the fn combo. Currently only SFB are considered.
+// https://github.com/Ikcelaks/keyboard_layouts
+
 // This keymap uses home row mods. In addition to mods, I have home row
 // layer-tap keys for the SYM layer. The key arrangement is a variation on
 // "GASC-order" home row mods:
@@ -176,17 +180,59 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
-// Define the behaviour of our custom keycodes
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
+  // Forget Shift on letter keys when Shift or AltGr are the only mods.
+  switch (keycode) {
+    case KC_A ... KC_Z:
+      if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+        *remembered_mods &= ~MOD_MASK_SHIFT;
+      }
+      break;
+  }
+  return true;
+}
+
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+  switch (keycode) {
+    // Minimize SFB on canary layout
+    case HRM_R: return KC_L;
+    case KC_V:  return KC_Y;
+    case HRM_S: return KC_Y;
+    case KC_Y:  return KC_S;
+    case KC_P:  return KC_T;
+    case HRM_I: return KC_U;
+    case KC_U:  return KC_I;
+    case KC_O:  return KC_E;
+    case HRM_E: return KC_O;
+
+    // vim optimisations
+    case KC_W:  return KC_Q; // write quit
+  }
+
+  return KC_TRNS;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (!process_sentence_case(keycode, record)) { return false; }
   if (!process_achordion(keycode, record)) { return false; }
   if (!process_select_word(keycode, record, SELWORD)) { return false; }
-
+  
   if (record->event.pressed) {
+    int rep_count = get_repeat_key_count();
+    // Define the behaviour of our custom keycodes.
     switch (keycode) {
       case SC_TOGG: // Toggle sentence case on/off.
         sentence_case_toggle();
         return false;
+
+      // Define the behaviour of our magic keycodes
+    }
+    if (rep_count > 0) {
+      // Repeat key overrides.
+      switch (keycode) {
+        // Minimize SFB on canary layout
+        case HRM_N: SEND_STRING(/*n*/"f"); return false;
+      }
     }
   }
 
