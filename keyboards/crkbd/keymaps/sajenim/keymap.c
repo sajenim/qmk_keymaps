@@ -42,28 +42,28 @@ enum custom_keycodes {
 
 // This keymap uses home row mods. In addition to mods, I have home row
 // layer-tap keys for the SYM layer. The key arrangement is a variation on
-// "CAGS-order" home row mods:
+// "GASC-order" home row mods:
 //
 //             Left hand                          Right hand
 // +-------+-------+-------+-------+   +-------+-------+-------+-------+
-// |  Ctrl |  Alt  |  Gui  | Shift |   | Shift |  Gui  |  Alt  | Ctrl  |
+// |  Gui  |  Alt  | Shift |  Ctrl |   |  Ctrl | Shift |  Alt  |  Gui  |
 // +-------+-------+-------+-------+   +-------+-------+-------+-------+
-// |  Sym  |                                                   |  Sym  |
-// +-------+                                                   +-------+
+//                         |  Sym  |   |  Sym  |
+//                         +-------+   +-------+
 
 // Left hand home row mods for CANARY layer.
-#define HRM_C   LCTL_T(KC_C)
+#define HRM_C   LGUI_T(KC_C)
 #define HRM_R   LALT_T(KC_R)
-#define HRM_S   LGUI_T(KC_S)
-#define HRM_T   LSFT_T(KC_T)
+#define HRM_S   LSFT_T(KC_S)
+#define HRM_T   LCTL_T(KC_T)
 // Right hand home row mods for CANARY layer.
-#define HRM_N   RSFT_T(KC_N)
-#define HRM_E   RGUI_T(KC_E)
+#define HRM_N   RCTL_T(KC_N)
+#define HRM_E   RSFT_T(KC_E)
 #define HRM_I   RALT_T(KC_I)
-#define HRM_A   RCTL_T(KC_A)
+#define HRM_A   RGUI_T(KC_A)
 // Bottom row home row mods for CANARY layer.
-#define HRM_Q   LT(SYM, KC_Q)
-#define HRM_DOT LT(SYM, KC_DOT)
+#define HRM_D   LT(SYM, KC_D)
+#define HRM_H   LT(SYM, KC_H)
 
 // Oneshot mods are available on our navigation and numbers layer.
 // This allows easy chords with typical window manager and terminal 
@@ -82,6 +82,7 @@ enum custom_keycodes {
 
 // Dual role thumb keys allow us to save space on our keymap
 // by having different functions in each the tap and hold slots.
+// Excluded from bilateral combinations.
 #define SPC_NAV LT(NAV, KC_SPC)
 #define ENT_NUM LT(NUM, KC_ENT)
 
@@ -102,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_TAB,   HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      OS_LSFT,   HRM_Q,    KC_J,    KC_V,    KC_D,    KC_K,                         KC_X,    KC_H, KC_SLSH, KC_COMM, HRM_DOT, OS_RSFT,
+      OS_LSFT,    KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT, OS_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           QK_REP, KC_BSPC, SPC_NAV,    ENT_NUM, OS_RSFT, QK_AREP
+                                          OS_LGUI, KC_BSPC, SPC_NAV,    ENT_NUM,  QK_REP, OS_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -112,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, KC_VOLU,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, XXXXXXX,
+      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, XXXXXXX,                      XXXXXXX, WZ_CMOD, WZ_PSTE, XXXXXXX,  KC_ENT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -124,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX,  KC_DEL,    KC_7,    KC_8,    KC_9, XXXXXXX,                      XXXXXXX, KC_PLUS, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_BSPC,    KC_4,    KC_5,    KC_6, XXXXXXX,                      XXXXXXX, OS_RSFT, OS_RGUI, OS_RALT, OS_RCTL, XXXXXXX,
+      XXXXXXX, KC_BSPC,    KC_4,    KC_5,    KC_6, XXXXXXX,                      XXXXXXX, OS_RCTL, OS_RSFT, OS_RALT, OS_RGUI, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_ENT,    KC_1,    KC_2,    KC_3, XXXXXXX,                      XXXXXXX, KC_ASTR, XXXXXXX, KC_BSLS,  KC_DOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -161,6 +162,18 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   // Activate MOD layer
   state = update_tri_layer_state(state, NAV, NUM, MOD);
   return state;
+// Bilateral combination exceptions
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+  switch (tap_hold_keycode) {
+    // Excempt layer taps on thumbs.
+    case SPC_NAV:
+    case ENT_NUM:
+      return true;
+      break;
+  }
+
+  // Otherwise follow opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 // Define the behaviour of our custom keycodes
