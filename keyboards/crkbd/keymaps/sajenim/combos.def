@@ -1,8 +1,13 @@
 // Dictionary management
 
-//   name     result    chord keys
-COMB(NE_ESC,  KC_ESC,   RSFT_T(KC_N), RGUI_T(KC_E))
-COMB(ST_TAB,  KC_TAB,   LGUI_T(KC_S), LSFT_T(KC_T))
-COMB(TN_CAP,  CW_TOGG,  LSFT_T(KC_T), RSFT_T(KC_N))
+// name         result    chord keys
+COMB(NE_ESC,    KC_ESC,   RCTL_T(KC_N), RSFT_T(KC_E))
+COMB(ST_TAB,    KC_TAB,   LSFT_T(KC_S), LCTL_T(KC_T))
+COMB(SE_CAP,    CW_TOGG,  LSFT_T(KC_S), RSFT_T(KC_E))
+COMB(FN_MAGIC,  QK_AREP,  KC_F,         RCTL_T(KC_N))
+// substitutions
+SUBS(YP_HOME,   "~/",   KC_Y, KC_P)
+SUBS(FO_UPDIR,  "../",  KC_F, KC_O)
+
 /* vim: set filetype=c: */
 
