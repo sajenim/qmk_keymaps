@@ -161,11 +161,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-// Layer change
-layer_state_t layer_state_set_user(layer_state_t state) {
-  // Activate MOD layer
-  state = update_tri_layer_state(state, NAV, NUM, MOD);
-  return state;
 // Bilateral combination exceptions
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
   switch (tap_hold_keycode) {
@@ -241,6 +236,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 void matrix_scan_user(void) {
   achordion_task();
+}
+
+// Layer change
+layer_state_t layer_state_set_user(layer_state_t state) {
+  // Activate MOD layer
+  state = update_tri_layer_state(state, NAV, NUM, MOD);
+  return state;
 }
 
 #ifdef OLED_ENABLE
