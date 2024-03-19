@@ -6,7 +6,7 @@ Personal keymaps for programmable keyboards. I currently use [canary](https://gi
 - [Keychron Q4](https://www.keychron.com/products/keychron-q4-qmk-via-custom-mechanical-keyboard):
 My gateway to QMK, 60% hotswappable with CNC machined body, i still use this for gaming and to retain qwerty muscle memory.
 - [Corne Cherry](https://github.com/foostan/crkbd)
-My intro to building keyboards, 3x6 column stagger with 3 thumb keys. This keyboard got me into alt layouts and 3D printing (case).
+My intro to building keyboards, 3x6 column stagger with 3 thumb keys. This keyboard got me into alt layouts and 3D printing (case). Sports glorious panda tactile switches and pulse mt3 keycaps with a [splinky](https://github.com/plut0nium/0xB2) mcu for all that extra storage for our macros.
 
 ## Todo
 - [Gerkin](https://www.40percent.club/2016/11/gherkin.html):
