@@ -219,8 +219,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SC_TOGG: // Toggle sentence case on/off.
         sentence_case_toggle();
         return false;
-
-      // Define the behaviour of our magic keycodes
     }
     if (rep_count > 0) {
       // Repeat key overrides.
