@@ -201,7 +201,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     case HRM_E: return KC_O;
 
     // vim optimisations
-    case KC_W:  return KC_Q; // write quit
+    case KC_W:   return KC_Q; // write quit
+    case HRM_C:  return KC_W; // change word
+    case HRM_D:  return KC_W; // delete word
   }
 
   return KC_TRNS;
