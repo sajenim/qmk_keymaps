@@ -31,7 +31,7 @@ enum layers {
   NAV,    // Inspired by the colemak communities extend layer, Brings navigation and editing to the home position.
   NUM,    // Contains our numpad and function keys.
   SYM,    // Contains our symbols.
-  MOD,    // Contains keyboard related modifications (and FKEYs :eyeroll:).
+  MOD,    // Contains keyboard related modifications.
 };
 
 // Our custom keycodes
@@ -45,13 +45,16 @@ enum custom_keycodes {
 // The magic key is triggered with the fn combo. Currently only SFB are considered.
 // https://github.com/Ikcelaks/keyboard_layouts
 
-// This keymap uses home row mods.
+// This keymap uses home row mods. In addition to mods, I have home row
+// layer-tap keys for the SYM layer. The key arrangement is a variation on
+// "GASC-order" home row mods:
 //
 //             Left hand                          Right hand
 // +-------+-------+-------+-------+   +-------+-------+-------+-------+
 // |  Gui  |  Alt  | Shift |  Ctrl |   |  Ctrl | Shift |  Alt  |  Gui  |
 // +-------+-------+-------+-------+   +-------+-------+-------+-------+
-//
+//                         |  Sym  |   |  Sym  |
+//                         +-------+   +-------+
 
 // Left hand home row mods for CANARY layer.
 #define HRM_C   LGUI_T(KC_C)
@@ -63,6 +66,9 @@ enum custom_keycodes {
 #define HRM_E   RSFT_T(KC_E)
 #define HRM_I   RALT_T(KC_I)
 #define HRM_A   RGUI_T(KC_A)
+// Bottom row mods for CANARY layer.
+#define HRM_D   LT(SYM, KC_D)
+#define HRM_H   LT(SYM, KC_H)
 
 // Oneshot mods are available on our navigation layer.
 // This allows easy chords with typical window manager and terminal 
@@ -85,7 +91,7 @@ enum custom_keycodes {
 #define SPC_NAV LT(NAV, KC_SPC)
 #define ENT_SFT LSFT_T(KC_ENT)
 #define BAK_NUM LT(NUM, KC_BSPC)
-#define REP_SYM LT(SYM, QK_REP)
+#define TAB_MOD LT(MOD, KC_TAB)
 
 // Shortcuts
 #define CK_UNDO LCTL(KC_Z)        // Undo
@@ -103,21 +109,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_GRV,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, DELWORD,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,   HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A, XXXXXXX,
+      CW_TOGG,   HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,    KC_Q,    KC_J,    KC_V,    KC_D,    KC_K,                         KC_X,    KC_H, KC_SLSH, KC_COMM,  KC_DOT, XXXXXXX,
+      XXXXXXX,    KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_TAB, BAK_NUM, SPC_NAV,    ENT_SFT, REP_SYM, SELWORD
+                                          TAB_MOD, BAK_NUM, SPC_NAV,    ENT_SFT,  QK_REP, SELWORD
                                       //`--------------------------'  `--------------------------'
   ),
 
   [NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_CALC,                         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,  KC_DEL,
+      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_CALC,                      WZ_CMOD, KC_HOME,   KC_UP,  KC_END, KC_PGUP,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLU,                      WZ_CMOD, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_BSPC,
+      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLU,                      WZ_PSTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_VOLD,                      WZ_PSTE, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_ENT,
+      XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_VOLD,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -148,13 +154,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MOD] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
+      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_PWR,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                      XXXXXXX, CM_TOGG, AS_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
+      QK_MAKE, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                      XXXXXXX, CM_TOGG, AS_TOGG, XXXXXXX, XXXXXXX, KC_SLEP,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                      XXXXXXX, SC_TOGG, AC_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
+                                          _______, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 };
@@ -166,7 +172,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     case SPC_NAV:
     case ENT_SFT:
     case BAK_NUM:
-    case REP_SYM:
+    case TAB_MOD:
       return true;
       break;
   }
@@ -236,13 +242,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 void matrix_scan_user(void) {
   achordion_task();
-}
-
-// Layer change
-layer_state_t layer_state_set_user(layer_state_t state) {
-  // Activate MOD layer
-  state = update_tri_layer_state(state, NUM, SYM, MOD);
-  return state;
 }
 
 #ifdef OLED_ENABLE
