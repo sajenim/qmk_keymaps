@@ -38,22 +38,20 @@ enum layers {
 enum custom_keycodes {
   SC_TOGG = SAFE_RANGE,
   SELWORD,
+  MAGIC2,
 };
 
 // This keymap uses Magic Canary, it is inspired by Ikcelaks' Magic Sturdy layout.
 // The magic key is triggered with the fn combo. Currently only SFB are considered.
 // https://github.com/Ikcelaks/keyboard_layouts
 
-// This keymap uses home row mods. In addition to mods, I have home row
-// layer-tap keys for the SYM layer. The key arrangement is a variation on
-// "GASC-order" home row mods:
+// This keymap uses home row mods.
 //
 //             Left hand                          Right hand
 // +-------+-------+-------+-------+   +-------+-------+-------+-------+
 // |  Gui  |  Alt  | Shift |  Ctrl |   |  Ctrl | Shift |  Alt  |  Gui  |
 // +-------+-------+-------+-------+   +-------+-------+-------+-------+
-//                         |  Sym  |   |  Sym  |
-//                         +-------+   +-------+
+//
 
 // Left hand home row mods for CANARY layer.
 #define HRM_C   LGUI_T(KC_C)
@@ -65,11 +63,8 @@ enum custom_keycodes {
 #define HRM_E   RSFT_T(KC_E)
 #define HRM_I   RALT_T(KC_I)
 #define HRM_A   RGUI_T(KC_A)
-// Bottom row home row mods for CANARY layer.
-#define HRM_D   LT(SYM, KC_D)
-#define HRM_H   LT(SYM, KC_H)
 
-// Oneshot mods are available on our navigation and numbers layer.
+// Oneshot mods are available on our navigation layer.
 // This allows easy chords with typical window manager and terminal 
 // bindings. Oneshot mods persist through layer changes.
 
@@ -88,7 +83,9 @@ enum custom_keycodes {
 // by having different functions in each the tap and hold slots.
 // Excluded from bilateral combinations.
 #define SPC_NAV LT(NAV, KC_SPC)
-#define ENT_NUM LT(NUM, KC_ENT)
+#define ENT_SFT LSFT_T(KC_ENT)
+#define BAK_NUM LT(NUM, KC_BSPC)
+#define REP_SYM LT(SYM, QK_REP)
 
 // Shortcuts
 #define CK_UNDO LCTL(KC_Z)        // Undo
@@ -96,6 +93,7 @@ enum custom_keycodes {
 #define CK_COPY LCTL(KC_C)        // Copy
 #define CK_PSTE LCTL(KC_V)        // Paste
 
+#define DELWORD LCTL(KC_BSPC)     // Delete word
 #define WZ_CMOD LCTL(LSFT(KC_X))  // Wezterm activate copy mode.
 #define WZ_PSTE LCTL(LSFT(KC_V))  // Wezterm paste from clipboard.
 
@@ -103,60 +101,60 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [CANARY] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, KC_BSPC,
+       KC_GRV,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, DELWORD,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_TAB,   HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A, KC_SCLN,
+      CW_TOGG,   HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      OS_LSFT,    KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT, OS_RSFT,
+      XXXXXXX,    KC_Q,    KC_J,    KC_V,    KC_D,    KC_K,                         KC_X,    KC_H, KC_SLSH, KC_COMM,  KC_DOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          OS_LGUI, KC_BSPC, SPC_NAV,    ENT_NUM,  QK_REP, OS_RALT
+                                           KC_TAB, BAK_NUM, SPC_NAV,    ENT_SFT, REP_SYM, SELWORD
                                       //`--------------------------'  `--------------------------'
   ),
 
   [NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, KC_VOLU,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL, XXXXXXX,
+      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_CALC,                         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, XXXXXXX,
+      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLU,                      WZ_CMOD, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, XXXXXXX,                      XXXXXXX, WZ_CMOD, WZ_PSTE, XXXXXXX,  KC_ENT, XXXXXXX,
+      XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_VOLD,                      WZ_PSTE, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX, _______,    _______, _______, XXXXXXX
+                                          XXXXXXX, XXXXXXX, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [NUM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,  KC_DEL,    KC_7,    KC_8,    KC_9, XXXXXXX,                      XXXXXXX, KC_PLUS, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX,
+      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      KC_SLSH,    KC_7,    KC_8,    KC_9, KC_MINS,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_BSPC,    KC_4,    KC_5,    KC_6, XXXXXXX,                      XXXXXXX, OS_RCTL, OS_RSFT, OS_RALT, OS_RGUI, XXXXXXX,
+      XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      KC_ASTR,    KC_4,    KC_5,    KC_6, KC_PLUS, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  KC_ENT,    KC_1,    KC_2,    KC_3, XXXXXXX,                      XXXXXXX, KC_ASTR, XXXXXXX, KC_SLSH,  KC_DOT, XXXXXXX,
+      XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                         KC_0,    KC_1,    KC_2,    KC_3,  KC_DOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______,    KC_0,    _______, XXXXXXX, XXXXXXX
+                                          XXXXXXX, _______, XXXXXXX,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
   [SYM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV, XXXXXXX, KC_LABK,  KC_DLR, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, XXXXXXX, _______,
+      XXXXXXX, XXXXXXX, KC_LABK,  KC_DLR, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_MINS, KC_BSLS, KC_LPRN, KC_DQUO, KC_RPRN, KC_HASH,                      KC_PERC, KC_LCBR,  KC_EQL, KC_RCBR, KC_PIPE, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, KC_COLN, KC_ASTR, KC_PLUS, XXXXXXX,                      XXXXXXX, KC_AMPR, KC_CIRC, KC_TILD, _______, XXXXXXX,
+      XXXXXXX, XXXXXXX, KC_COLN, KC_ASTR, KC_PLUS, XXXXXXX,                      XXXXXXX, KC_AMPR, KC_CIRC, KC_TILD, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
+                                          XXXXXXX,  MAGIC2, XXXXXXX,    XXXXXXX, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
   [MOD] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
+      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      QK_BOOT, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                      XXXXXXX, CM_TOGG, AS_TOGG, XXXXXXX, XXXXXXX, KC_SLEP,
+      XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                      XXXXXXX, CM_TOGG, AS_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      QK_MAKE, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                      XXXXXXX, SC_TOGG, AC_TOGG, XXXXXXX, XXXXXXX, KC_WAKE,
+      XXXXXXX, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                      XXXXXXX, SC_TOGG, AC_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX, _______,    _______, XXXXXXX, XXXXXXX
+                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 };
@@ -164,9 +162,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Bilateral combination exceptions
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
   switch (tap_hold_keycode) {
-    // Excempt layer taps on thumbs.
+    // Excempt mod/layer taps on thumbs.
     case SPC_NAV:
-    case ENT_NUM:
+    case ENT_SFT:
+    case BAK_NUM:
+    case REP_SYM:
       return true;
       break;
   }
@@ -203,7 +203,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     // vim optimisations
     case KC_W:   return KC_Q; // write quit
     case HRM_C:  return KC_W; // change word
-    case HRM_D:  return KC_W; // delete word
+    case KC_D:   return KC_W; // delete word
   }
 
   return KC_TRNS;
@@ -241,7 +241,7 @@ void matrix_scan_user(void) {
 // Layer change
 layer_state_t layer_state_set_user(layer_state_t state) {
   // Activate MOD layer
-  state = update_tri_layer_state(state, NAV, NUM, MOD);
+  state = update_tri_layer_state(state, NUM, SYM, MOD);
   return state;
 }
 

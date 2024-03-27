@@ -18,6 +18,10 @@
 #define QUICK_TAP_TERM 0  // disable the auto-repeat feature entirely
 #define ACHORDION_STREAK  // disables hold behaviors when in a typing streak
 
+// Timeouts
+#define ONESHOT_TIMEOUT 3000
+#define CAPS_WORD_IDlE_TIMEOUT 3000
+
 // RGB
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SLEEP

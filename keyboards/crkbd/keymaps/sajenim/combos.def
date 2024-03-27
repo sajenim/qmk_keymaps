@@ -2,8 +2,6 @@
 
 // name         result    chord keys
 COMB(NE_ESC,    KC_ESC,   RCTL_T(KC_N), RSFT_T(KC_E))
-COMB(ST_TAB,    KC_TAB,   LSFT_T(KC_S), LCTL_T(KC_T))
-COMB(SE_CAP,    CW_TOGG,  LSFT_T(KC_S), RSFT_T(KC_E))
 COMB(FN_MAGIC,  QK_AREP,  KC_F,         RCTL_T(KC_N))
 // substitutions
 SUBS(YP_HOME,   "~/",   KC_Y, KC_P)
