@@ -16,9 +16,6 @@
 
 #include QMK_KEYBOARD_H
 
-// Combo dictionary management
-#include "g/keymap_combo.h"
-
 // Awesome features created by getreuer
 #include "features/sentence_case.h"
 #include "features/achordion.h"
@@ -34,6 +31,9 @@ enum layers {
   SYM,    // Contains our symbols.
   MOD,    // Contains keyboard related modifications.
 };
+
+// Combo dictionary management (layer names must be defined before engine include)
+#include "g/keymap_combo.h"
 
 // Our custom keycodes
 enum custom_keycodes {

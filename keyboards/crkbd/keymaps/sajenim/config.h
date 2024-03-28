@@ -22,6 +22,9 @@
 #define ONESHOT_TIMEOUT 3000
 #define CAPS_WORD_IDlE_TIMEOUT 3000
 
+// combos' keys are always checked from layer 0
+#define COMBO_ONLY_FROM_LAYER 0
+
 // RGB
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SLEEP
