@@ -19,6 +19,7 @@ RGBLIGHT_ENABLE				= yes
 SRC += features/sentence_case.c
 SRC += features/achordion.c
 SRC += features/select_word.c
+SRC += features/layer_lock.c
 
 # Oled display configuration
 ifeq ($(OLED_ENABLE),yes)

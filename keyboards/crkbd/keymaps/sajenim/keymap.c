@@ -23,6 +23,7 @@
 #include "features/sentence_case.h"
 #include "features/achordion.h"
 #include "features/select_word.h"
+#include "features/layer_lock.h"
 // https://github.com/getreuer/qmk-keymap/tree/main/features
 
 // Our super useful layers, why we run qmk exclusively.
@@ -37,6 +38,7 @@ enum layers {
 // Our custom keycodes
 enum custom_keycodes {
   SC_TOGG = SAFE_RANGE,
+  LLOCK,
   SELWORD,
   MAGIC2,
 };
@@ -219,6 +221,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (!process_sentence_case(keycode, record)) { return false; }
   if (!process_achordion(keycode, record)) { return false; }
   if (!process_select_word(keycode, record, SELWORD)) { return false; }
+  if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
   
   if (record->event.pressed) {
     int rep_count = get_repeat_key_count();
