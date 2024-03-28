@@ -93,7 +93,6 @@ enum custom_keycodes {
 #define SPC_NAV LT(NAV, KC_SPC)
 #define ENT_SFT LSFT_T(KC_ENT)
 #define BAK_NUM LT(NUM, KC_BSPC)
-#define TAB_MOD LT(MOD, KC_TAB)
 
 // Shortcuts
 #define CK_UNDO LCTL(KC_Z)        // Undo
@@ -115,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,    KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          TAB_MOD, BAK_NUM, SPC_NAV,    ENT_SFT,  QK_REP, SELWORD
+                                           KC_TAB, BAK_NUM, SPC_NAV,    ENT_SFT,  QK_REP, SELWORD
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -174,7 +173,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     case SPC_NAV:
     case ENT_SFT:
     case BAK_NUM:
-    case TAB_MOD:
       return true;
       break;
   }
