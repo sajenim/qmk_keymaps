@@ -40,10 +40,21 @@ enum custom_keycodes {
   SC_TOGG = SAFE_RANGE,
   LLOCK,
   SELWORD,
+
+  // Magic keycodes
+  MG_THE,
+  MG_BUT,
+  MG_BEFORE,
+  MG_JUST,
+  MG_MENT,
+  MG_NION,
+  MG_TMENT,
+  MG_WHICH,
+  MG_XES,
 };
 
 // This keymap uses Magic Canary, it is inspired by Ikcelaks' Magic Sturdy layout.
-// The magic key is triggered with the fn combo. Currently only SFB are considered.
+// The magic key is triggered with the fn combo. Currently only SFB and some common words are considered.
 // https://github.com/Ikcelaks/keyboard_layouts
 
 // This keymap uses home row mods. In addition to mods, I have home row
@@ -195,20 +206,32 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   switch (keycode) {
     // Minimize SFB on canary layout
-    case HRM_R: return KC_L;
-    case KC_V:  return KC_Y;
-    case HRM_S: return KC_Y;
-    case KC_Y:  return KC_S;
-    case KC_P:  return KC_T;
-    case HRM_I: return KC_U;
-    case KC_U:  return KC_I;
-    case KC_O:  return KC_E;
-    case HRM_E: return KC_O;
+    case HRM_R:   return KC_L;
+    case KC_V:    return KC_Y;
+    case HRM_S:   return KC_Y;
+    case KC_Y:    return KC_S;
+    case KC_P:    return KC_T;
+    case HRM_I:   return KC_U;
+    case KC_U:    return KC_I;
+    case KC_O:    return KC_E;
+    case HRM_E:   return KC_O;
+    // Remove problem scissors bigrams
+    case KC_L:    return KC_V;
+
+    // Briefs
+    case SPC_NAV: return MG_THE;
+    case KC_COMM: return MG_BUT;
+    case KC_B:    return MG_BEFORE;
+    case KC_J:    return MG_JUST;
+    case KC_M:    return MG_MENT;
+    case HRM_N:   return MG_NION;
+    case HRM_T:   return MG_TMENT;
+    case KC_W:    return MG_WHICH;
+    case KC_X:    return MG_XES;
 
     // vim optimisations
-    case KC_W:   return KC_Q; // write quit
-    case HRM_C:  return KC_W; // change word
-    case HRM_D:  return KC_W; // delete word
+    case HRM_C:   return KC_W; // change word
+    case HRM_D:   return KC_W; // delete word
   }
 
   return KC_TRNS;
@@ -227,12 +250,62 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SC_TOGG: // Toggle sentence case on/off.
         sentence_case_toggle();
         return false;
+      // Magic key briefs
+      case MG_THE:
+        SEND_STRING(/* */"the");
+        return false;
+      case MG_BUT:
+        SEND_STRING(/*,*/" but");
+        return false;
+      case MG_BEFORE:
+        SEND_STRING(/*b*/"efore");
+        return false;
+      case MG_JUST:
+        SEND_STRING(/*j*/"ust");
+        return false;
+      case MG_MENT:
+        SEND_STRING(/*m*/"ent");
+        return false;
+      case MG_NION:
+        SEND_STRING(/*n*/"ion");
+        return false;
+      case MG_TMENT:
+        SEND_STRING(/*t*/"ment");
+        return false;
+      case MG_WHICH:
+        SEND_STRING(/*w*/"hich");
+        return false;
+      case MG_XES:
+        SEND_STRING(/*x*/"es");
+        return false;
     }
     if (rep_count > 0) {
       // Repeat key overrides.
       switch (keycode) {
         // Minimize SFB on canary layout
         case HRM_N: SEND_STRING(/*n*/"f"); return false;
+        // Briefs
+        case SPC_NAV:
+          SEND_STRING(/* */"for");
+          return false;
+        case KC_COMM:
+          SEND_STRING(/*,*/" and");
+          return false;
+        case HRM_A:
+          SEND_STRING(/*a*/"nd");
+          return false;
+        case HRM_I:
+          SEND_STRING(/*i*/"ng");
+          return false;
+        case KC_Y:
+          SEND_STRING(/*y*/"ou");
+          return false;
+        case KC_B:
+          SEND_STRING(/*b*/"ecause");
+          return  false;
+        case KC_W:
+          SEND_STRING(/*w*/"ould");
+          return false;
       }
     }
   }
