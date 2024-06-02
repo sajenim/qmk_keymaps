@@ -2,6 +2,10 @@
 
 Personal keymaps for programmable keyboards. I currently use [canary](https://github.com/Apsu/Canary) layout and am working on implementing a [magic](https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md) key to minimize SFB and improve flow.
 
+> ### ⚠️ Migrated to Forejo
+>
+> This project has [migrated to forgejo](https://git.sajenim.dev/jasmine/qmk_keymaps).
+
 ## Keyboards
 - [Keychron Q4](https://www.keychron.com/products/keychron-q4-qmk-via-custom-mechanical-keyboard):
 My gateway to QMK, 60% hotswappable with CNC machined body, i still use this for gaming and to retain qwerty muscle memory.
