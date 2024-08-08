@@ -1,4 +1,4 @@
-// Dictionary management
+// clang-format off
 
 // name           result    chord keys
 COMB(NE_ESC,      KC_ESC,   RCTL_T(KC_N),    RSFT_T(KC_E))
