@@ -6,20 +6,14 @@ BOOTLOADER = rp2040
 LTO_ENABLE = yes
 
 # Software features
-AUTOCORRECT_ENABLE		= yes
-AUTO_SHIFT_ENABLE			= yes
-CAPS_WORD_ENABLE			= yes
-COMBO_ENABLE					= yes
-OLED_ENABLE						= yes
-REPEAT_KEY_ENABLE			= yes
-RGBLIGHT_ENABLE				= yes
-
+AUTOCORRECT_ENABLE = yes
+CAPS_WORD_ENABLE	 = yes
+COMBO_ENABLE			 = yes
+OLED_ENABLE				 = yes
+REPEAT_KEY_ENABLE	 = yes
 
 # Feature libraries
-SRC += features/sentence_case.c
 SRC += features/achordion.c
-SRC += features/select_word.c
-SRC += features/layer_lock.c
 
 # Oled display configuration
 ifeq ($(OLED_ENABLE),yes)
