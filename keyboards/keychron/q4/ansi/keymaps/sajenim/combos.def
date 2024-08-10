@@ -1,0 +1,6 @@
+// clang-format off
+
+// name      result  1st chord key 2nd chord key
+COMB(JK_ESC, KC_ESC, KC_J,         KC_K)
+
+/* vim: set filetype=c: */
