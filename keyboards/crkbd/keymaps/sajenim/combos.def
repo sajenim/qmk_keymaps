@@ -3,7 +3,7 @@
 // name           result    1st chord key    2nd chord key
 COMB(NE_ESC,      KC_ESC,   RCTL_T(KC_N),    RSFT_T(KC_E))
 COMB(SE_CAP,      CW_TOGG,  LSFT_T(KC_S),    RSFT_T(KC_E))
-COMB(THUMB_SLEEP, KC_SLEP,  LT(NAV, KC_SPC), LSFT_T(KC_ENT))
+COMB(THUMB_SLEEP, KC_SLEP,  LT(NAV, KC_SPC), KC_ENT)
 SUBS(YP_HOME,     "~/",     KC_Y,            KC_P)
 SUBS(FO_UPDIR,    "../",    KC_F,            KC_O)
 
