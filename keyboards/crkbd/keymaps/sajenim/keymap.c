@@ -169,7 +169,6 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   switch (keycode) {
     case MT_R: return KC_L; // For "RL" bigram.
-    case KC_V: return KC_Y; // For "VY" bigram.
     case MT_S: return KC_Y; // For "SY" bigram.
     case KC_Y: return KC_S; // For "YS" bigram.
     case KC_P: return KC_T; // For "PT" bigram.
@@ -177,6 +176,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     case KC_U: return KC_I; // For "UI" bigram.
     case KC_O: return KC_E; // For "OE" bigram.
     case MT_E: return KC_O; // For "EO" bigram.
+    case MT_N: return KC_F; // For "NF" bigram.
   }
   return KC_TRNS;
 }
