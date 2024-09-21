@@ -11,6 +11,7 @@ CAPS_WORD_ENABLE	 = yes
 COMBO_ENABLE			 = yes
 OLED_ENABLE				 = yes
 REPEAT_KEY_ENABLE	 = yes
+RGBLIGHT_ENABLE	   = yes
 
 # Feature libraries
 SRC += features/achordion.c
