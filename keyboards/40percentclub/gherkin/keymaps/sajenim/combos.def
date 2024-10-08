@@ -1,8 +1,20 @@
 // clang-format off
 
-//name        result   1st chord key   2nd chord key
-COMB(HA_ESC,  KC_ESC,  RCTL_T(KC_H),   RSFT_T(KC_A))
-COMB(TS_TAB,  KC_TAB,  LSFT_T(KC_T),   LCTL_T(KC_S))
-COMB(TA_CAPS, CW_TOGG, LSFT_T(KC_T),   RSFT_T(KC_A))
+//name        result    1st chord key    2nd chord key
+COMB(HA_ESC,  KC_ESC,   RCTL_T(KC_H),    RSFT_T(KC_A))
+COMB(TS_COLN, KC_COLN,  LSFT_T(KC_T),    LCTL_T(KC_S))
+COMB(AE_ENT,  KC_ENT,   RSFT_T(KC_A),    RALT_T(KC_E))
+COMB(RT_TAB,  KC_TAB,   LALT_T(KC_R),    LSFT_T(KC_T))
+COMB(NR_CAPS, CW_TOGG,  LGUI_T(KC_N),    LALT_T(KC_R))
+
+COMB(X,       KC_X,     KC_W,            KC_M)
+COMB(Q,       KC_Q,     KC_M,            LT(NAV, KC_BSPC))
+COMB(Z,       KC_Z,     LT(NUM, KC_SPC), KC_QUOT)
+COMB(J,       KC_J,     KC_QUOT,         KC_QUES)
+
+SUBS(HOME,    "~/",     KC_D,            QK_REP)
+SUBS(UPDIR,   "../",    QK_AREP,         KC_O)
+
+SUBS(SAVE,    SS_TAP(X_ESC)":w"SS_TAP(X_ENT),  RCTL_T(KC_H),   RSFT_T(KC_A),   RALT_T(KC_E))
 
 /* vim: set filetype=c: */
