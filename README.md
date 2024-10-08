@@ -5,14 +5,17 @@ Personal keymaps for programmable keyboards.
 ## Keyboards
 - [Keychron Q4](https://www.keychron.com/products/keychron-q4-qmk-via-custom-mechanical-keyboard)
 - [Corne Cherry](https://github.com/foostan/crkbd)
-- [Gerkin](https://www.40percent.club/2016/11/gherkin.html)
+- [Gherkin](https://www.40percent.club/2016/11/gherkin.html)
 - [Dactyl Manuform](https://github.com/tshort/dactyl-keyboard)
 
 ## Features
-* **Canary Layout**
 * **Autocorrect**
 * **Magic Key**
 * **Home Row Mods**
+* **Comboes**
+
+## Layouts
+![mherkium](assets/mherkium.png)
 
 ## Installation
 Follow the [getting started](https://docs.qmk.fm/#/newbs_getting_started) docs to install [QMK Firmware](https://docs.qmk.fm/#/)
