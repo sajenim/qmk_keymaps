@@ -12,9 +12,11 @@ COMB(Q,       KC_Q,     KC_M,            LT(NAV, KC_BSPC))
 COMB(Z,       KC_Z,     LT(NUM, KC_SPC), KC_QUOT)
 COMB(J,       KC_J,     KC_QUOT,         KC_QUES)
 
+SUBS(CD,      "cd ",    KC_L,            KC_D)
 SUBS(HOME,    "~/",     KC_D,            QK_REP)
 SUBS(UPDIR,   "../",    QK_AREP,         KC_O)
 
+COMB(SLEEP,   KC_SLEP,  KC_B, KC_COMM,  LT(SYM, KC_F),  LT(SYM, KC_DOT))
 SUBS(SAVE,    SS_TAP(X_ESC)":w"SS_TAP(X_ENT),  RCTL_T(KC_H),   RSFT_T(KC_A),   RALT_T(KC_E))
 
 /* vim: set filetype=c: */

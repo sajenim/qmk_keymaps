@@ -146,7 +146,6 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     case  KC_W: return KC_R;    // "WR" sfb (0.040%)
     case HRM_N: return KC_F;    // "NF" sfb (0.036%)
     case HRM_E: return KC_QUES; // "E?" sfb (0.035%)
-    case  KC_C: return KC_D;    // "CD" scissor
 
     // Magic Keycodes
     case   SYM_F: return MG_OR;
