@@ -13,9 +13,6 @@ OLED_ENABLE				 = yes
 REPEAT_KEY_ENABLE	 = yes
 RGBLIGHT_ENABLE	   = yes
 
-# Feature libraries
-SRC += features/achordion.c
-
 # Oled display configuration
 ifeq ($(OLED_ENABLE),yes)
 	OLED_DRIVER = ssd1306

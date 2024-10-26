@@ -15,31 +15,44 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "features/achordion.h"
 
 enum layers {
   CANARY,
   NAV,
   NUM,
   SYM,
-  MOD,
+  FUN,
 };
 
 #include "g/keymap_combo.h" // layer names must be defined before engine include
 
+#define NAV_REP LT(NAV, QK_REP)
+#define NUM_MAG LT(NUM, QK_AREP)
+
+enum custom_keycodes {
+  TRIPDOT = SAFE_RANGE,
+
+  // Magic Keycodes
+  MG_OR,
+  MG_ON,
+  MG_ER,
+  MG_HA,
+  MG_BUT
+};
+
 /* Home Row Mods:
  * https://precondition.github.io/home-row-mods */
 
-#define MT_C LGUI_T(KC_C)
-#define MT_R LALT_T(KC_R)
-#define MT_S LSFT_T(KC_S)
-#define MT_T LCTL_T(KC_T)
-#define MT_N RCTL_T(KC_N)
-#define MT_E RSFT_T(KC_E)
-#define MT_I RALT_T(KC_I)
-#define MT_A RGUI_T(KC_A)
-#define LT_D LT(SYM, KC_D)
-#define LT_H LT(SYM, KC_H)
+#define HRM_C LGUI_T(KC_C)
+#define HRM_R LALT_T(KC_R)
+#define HRM_S LSFT_T(KC_S)
+#define HRM_T LCTL_T(KC_T)
+#define HRM_N RCTL_T(KC_N)
+#define HRM_E RSFT_T(KC_E)
+#define HRM_I RALT_T(KC_I)
+#define HRM_A RGUI_T(KC_A)
+#define HRM_D LT(SYM, KC_D)
+#define HRM_H LT(SYM, KC_H)
 
 /* One Shot Keys:
  * https://github.com/qmk/qmk_firmware/blob/master/docs/one_shot_keys.md */
@@ -52,12 +65,6 @@ enum layers {
 #define OS_RSFT OSM(MOD_RSFT)
 #define OS_RALT OSM(MOD_RALT)
 #define OS_RGUI OSM(MOD_RGUI)
-
-/* Mod Tap:
- * https://github.com/qmk/qmk_firmware/blob/master/docs/mod_tap.md */
-
-#define SPC_NAV LT(NAV, KC_SPC)
-#define BAK_NUM LT(NUM, KC_BSPC)
 
 /* Shortcuts:
  * Some useful shortcuts such as copy paste */
@@ -75,53 +82,53 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [CANARY] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, DELWORD,
+      QK_GESC,    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_TAB,    MT_C,    MT_R,    MT_S,    MT_T,    KC_G,                         KC_M,    MT_N,    MT_E,    MT_I,    MT_A, KC_SCLN,
+       KC_TAB,   HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,    KC_Q,    KC_J,    KC_V,    LT_D,    KC_K,                         KC_X,    LT_H, KC_SLSH, KC_COMM,  KC_DOT, XXXXXXX,
+      OS_LSFT,    KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT, OS_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           QK_REP, BAK_NUM, SPC_NAV,     KC_ENT, OS_LSFT, QK_AREP
+                                          XXXXXXX, NAV_REP, DELWORD,     KC_SPC, NUM_MAG, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
   [NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_VOLU,                      WZ_CMOD, KC_HOME,   KC_UP,  KC_END, KC_PGUP,  KC_DEL,
+      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_VOLU,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, WZ_CMOD,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      WZ_PSTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC,
+      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, WZ_PSTE, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_CALC,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,  KC_ENT,
+      XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_CALC,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX, _______,    XXXXXXX, XXXXXXX, XXXXXXX
+                                          XXXXXXX, _______, XXXXXXX,    _______, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
   [NUM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      KC_SLSH,    KC_7,    KC_8,    KC_9, KC_MINS,  KC_DEL,
+      XXXXXXX, KC_MINS,    KC_7,    KC_8,    KC_9, KC_SLSH,                      XXXXXXX,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      KC_ASTR,    KC_4,    KC_5,    KC_6, KC_PLUS, KC_BSPC,
+      XXXXXXX, KC_PLUS,    KC_4,    KC_5,    KC_6, KC_ASTR,                      XXXXXXX,   KC_F4,   KC_F5,   KC_F6,  KC_F11, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                         KC_0,    KC_1,    KC_2,    KC_3,  KC_DOT,  KC_ENT,
+      XXXXXXX,    KC_0,    KC_1,    KC_2,    KC_3,  KC_DOT,                      XXXXXXX,   KC_F1,   KC_F2,   KC_F3,  KC_F12, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+                                          XXXXXXX, _______, _______,    XXXXXXX, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
   [SYM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, KC_LABK,  KC_DLR, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, XXXXXXX, XXXXXXX,
+      XXXXXXX,  KC_GRV, KC_LABK, KC_MINS, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, TRIPDOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_MINS, KC_BSLS, KC_LPRN, KC_DQUO, KC_RPRN, KC_HASH,                      KC_PERC, KC_LCBR,  KC_EQL, KC_RCBR, KC_PIPE, KC_SCLN,
+      XXXXXXX, KC_EXLM, KC_LPRN,  KC_EQL, KC_RPRN, KC_HASH,                      KC_PERC, KC_LCBR,  KC_DLR, KC_RCBR, KC_SCLN, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, KC_COLN, KC_ASTR, KC_PLUS, XXXXXXX,                      XXXXXXX, KC_AMPR, KC_CIRC, KC_TILD, XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_COLN, KC_AMPR, KC_CIRC,   KC_AT, XXXXXXX,                      XXXXXXX, KC_ASTR, KC_SLSH, KC_BSLS, KC_PIPE, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
-  [MOD] = LAYOUT_split_3x6_3(
+  [FUN] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -129,44 +136,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   )
 };
 
 // clang-format on
 
-/* Achordion:
- * https://getreuer.info/posts/keyboards/achordion/index.html */
-
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode,
-                     keyrecord_t *other_record) {
-  switch (tap_hold_keycode) {
-    // Exceptionally consider the following chords as holds, even though they
-    // are on the same hand.
-    case SPC_NAV:
-    case BAK_NUM: return true; break;
-  }
-  // Otherwise follow opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-/* Custom keycodes:
- * Program the behaviour of any keycode */
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_achordion(keycode, record)) {
-    return false;
-  }
-  return true;
-}
-
 /* Repeat key:
- * Configure additional keys to be ignored */
+ * Configure additional key */
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
-  // Forget Shift on letter keys when Shift or AltGr are the only mods.
   switch (keycode) {
+    case NAV_REP: return false;
+    case NUM_MAG: return false;
+    // Forget Shift on letter keys when Shift or AltGr are the only mods.
     case KC_A ... KC_Z:
       if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
         *remembered_mods &= ~MOD_MASK_SHIFT;
@@ -179,25 +163,73 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 /* Alternate repeat key:
  * dynamically adjust output based on the most recent previous keycode */
 
+// clang-format off
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   switch (keycode) {
-    case MT_R: return KC_L; // For "RL" bigram.
-    case MT_S: return KC_Y; // For "SY" bigram.
-    case KC_Y: return KC_S; // For "YS" bigram.
-    case KC_P: return KC_T; // For "PT" bigram.
-    case MT_I: return KC_U; // For "IU" bigram.
-    case KC_U: return KC_I; // For "UI" bigram.
-    case KC_O: return KC_E; // For "OE" bigram.
-    case MT_E: return KC_O; // For "EO" bigram.
-    case MT_N: return KC_F; // For "NF" bigram.
+    case  KC_Y: return KC_S;     // "YS" sfb (0.123%)
+    case HRM_E: return KC_O;     // "EO" sfb (0.121%)
+    case HRM_R: return KC_L;     // "RL" sfb (0.114%)
+    case  KC_U: return KC_I;     // "UI" sfb (0.073%)
+    case  KC_O: return KC_E;     // "OE" sfb (0.060%)
+    case  KC_P: return KC_T;     // "PT" sfb (0.050%)
+    case HRM_N: return KC_F;     // "NF" sfb (0.036%)
+    case HRM_S: return KC_Y;     // "SY" sfb (0.024%)
+    case HRM_D: return KC_G;     // "DG" sfb (0.021%)
+    
+    // Magic Keycodes
+    case    KC_F: return MG_OR;
+    case   HRM_I: return MG_ON;
+    case    KC_V: return MG_ER;
+    case   HRM_T: return MG_HA;
+    case KC_COMM: return MG_BUT;
   }
   return KC_TRNS;
 }
+// clang-format on
 
-/* Custom matrix scanning:
- * This function gets called at every matrix scan */
+/* Custom keycodes:
+ * Program the behaviour of any keycode */
 
-void matrix_scan_user(void) { achordion_task(); }
+// clang-format off
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case NAV_REP:
+      if (record->tap.count) {
+        process_repeat_key(QK_REP, record);
+        return false;
+      }
+    case NUM_MAG:
+      if (record->tap.count) {
+        process_repeat_key(QK_AREP, record);
+        return false;
+      }
+  }
+
+  if (record->event.pressed) {
+    int rep_count = get_repeat_key_count();
+    switch (keycode) {
+      case TRIPDOT: SEND_STRING("..."       ); return false;
+      case   MG_OR: SEND_STRING(/*f*/ "or"  ); return false; // "for"   trigram (1.181%)
+      case   MG_ON: SEND_STRING(/*i*/ "on"  ); return false; // "ion"   trigram (0.851%)
+      case   MG_ER: SEND_STRING(/*v*/ "er"  ); return false; // "ver"   trigram (1.273%)
+      case   MG_HA: SEND_STRING(/*t*/ "ha"  ); return false; // "tha"   trigram (1.864%)
+      case  MG_BUT: SEND_STRING(/*,*/ " but"); return false; // ", but" brief
+    }
+    if (rep_count > 0) {
+      switch (keycode) {
+        case   HRM_A: SEND_STRING(/*a*/ "nd"  ); return false; // "and"   trigram (3.293%)
+        case   HRM_I: SEND_STRING(/*i*/ "ng"  ); return false; // "ing"   trigram (3.476%)
+        case    KC_Y: SEND_STRING(/*y*/ "ou"  ); return false; // "you"   trigram (3.492%)
+        case KC_COMM: SEND_STRING(/*,*/ " and"); return false; // ", and" brief
+        case  KC_SPC: SEND_STRING(/* */ "the" ); return false; // " the"  brief
+      }
+    }
+  }
+  return true;
+}
+// clang-format on
+
+layer_state_t layer_state_set_user(layer_state_t state) { return update_tri_layer_state(state, NAV, NUM, FUN); }
 
 #ifdef OLED_ENABLE
 // Declare screen rotation for each half
@@ -218,7 +250,7 @@ void oled_render_master(void) {
     case NAV: oled_write(" NAV ", false); break;
     case NUM: oled_write(" NUM ", false); break;
     case SYM: oled_write(" SYM ", false); break;
-    case MOD: oled_write(" MOD ", false); break;
+    case FUN: oled_write(" FUN ", false); break;
     default: oled_write(" UND ", false);
   }
 
