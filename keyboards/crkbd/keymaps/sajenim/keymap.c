@@ -30,10 +30,8 @@ enum layers {
 #define NUM_MAG LT(NUM, QK_AREP)
 
 enum custom_keycodes {
-  TRIPDOT = SAFE_RANGE,
-
   // Magic Keycodes
-  MG_OR,
+  MG_OR = SAFE_RANGE,
   MG_ON,
   MG_ER,
   MG_HA,
@@ -88,15 +86,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       OS_LSFT,    KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT, OS_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, NAV_REP, DELWORD,     KC_SPC, NUM_MAG, XXXXXXX
+                                          OS_LGUI, NAV_REP, DELWORD,     KC_SPC, NUM_MAG, OS_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
   [NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_VOLU,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, WZ_CMOD,  KC_DEL,
+      XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_VOLU,                      WZ_CMOD, KC_HOME,   KC_UP,  KC_END, KC_PGUP,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, WZ_PSTE, _______,
+      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      WZ_PSTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_CALC,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -118,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [SYM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,  KC_GRV, KC_LABK, KC_MINS, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, TRIPDOT, XXXXXXX,
+      XXXXXXX,  KC_GRV, KC_LABK, KC_MINS, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, KC_PLUS, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, KC_EXLM, KC_LPRN,  KC_EQL, KC_RPRN, KC_HASH,                      KC_PERC, KC_LCBR,  KC_DLR, KC_RCBR, KC_SCLN, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -208,7 +206,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
     int rep_count = get_repeat_key_count();
     switch (keycode) {
-      case TRIPDOT: SEND_STRING("..."       ); return false;
       case   MG_OR: SEND_STRING(/*f*/ "or"  ); return false; // "for"   trigram (1.181%)
       case   MG_ON: SEND_STRING(/*i*/ "on"  ); return false; // "ion"   trigram (0.851%)
       case   MG_ER: SEND_STRING(/*v*/ "er"  ); return false; // "ver"   trigram (1.273%)
