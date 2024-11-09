@@ -41,14 +41,14 @@ enum custom_keycodes {
 /* Home Row Mods:
  * https://precondition.github.io/home-row-mods */
 
-#define HRM_C LGUI_T(KC_C)
-#define HRM_R LALT_T(KC_R)
-#define HRM_S LSFT_T(KC_S)
-#define HRM_T LCTL_T(KC_T)
-#define HRM_N RCTL_T(KC_N)
-#define HRM_E RSFT_T(KC_E)
-#define HRM_I RALT_T(KC_I)
-#define HRM_A RGUI_T(KC_A)
+#define HRM_C LSFT_T(KC_C)
+#define HRM_R LCTL_T(KC_R)
+#define HRM_S LALT_T(KC_S)
+#define HRM_T LGUI_T(KC_T)
+#define HRM_N RGUI_T(KC_N)
+#define HRM_E RALT_T(KC_E)
+#define HRM_I RCTL_T(KC_I)
+#define HRM_A RSFT_T(KC_A)
 #define HRM_D LT(SYM, KC_D)
 #define HRM_H LT(SYM, KC_H)
 
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_VOLU,                      WZ_CMOD, KC_HOME,   KC_UP,  KC_END, KC_PGUP,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, KC_VOLD,                      WZ_PSTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
+      XXXXXXX, OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, KC_VOLD,                      WZ_PSTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, KC_CALC,                         KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
