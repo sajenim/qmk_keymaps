@@ -1,21 +1,22 @@
+
 layout:
   qmk_keyboard: crkbd/rev1
   qmk_layout: LAYOUT_split_3x6_3
 layers:
   Canary:
-    - [{type: ghost, t: Esc}, W, L, Y, P, B, Z, F, O, U, "'", {type: ghost, t: Bspc}]
-    - [{type: ghost, t: Tab}, {h: Gui, t: C}, {h: Alt, t: R}, {h: Sft, t: S}, {h: Ctl, t: T}, G, M, {h: Ctl, t: N}, {h: Sft, t: E}, {h: Alt, t: I}, {h: Gui, t: A}, {type: ghost, t: Enter}]
+    - [{type: ghost, t: Esc}, W, L, Y, P, B, Z, F, O, U, "'", {type: ghost, t: Ctrl Bspc}]
+    - [{type: ghost, t: Tab}, {h: Sft, t: C}, {h: Ctl, t: R}, {h: Alt, t: S}, {h: Gui, t: T}, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctl, t: I}, {h: Sft, t: A}, {type: ghost, t: Enter}]
     - [{type: ghost, t: osm Shift}, Q, J, V, {h: Sym, t: D}, K, X, {h: Sym, t: H}, "/", ",", ".", {type: ghost, t: osm Shift}]
-    - {type: ghost}
+    - osm Gui
     - {h: Nav,  t: Repeat}
-    - Ctrl Bspc
+    - Bspc
     - Space
     - {h: Num, t: Magic}
-    - {type: ghost}
+    - osm Alt
     
   Nav:
-    - [null, Media Play, Media Stop, Media Prev, Media Next, Vol Up, PgUp, Home, ▲, End, Term Copy, {type: ghost, t: Del}]
-    - [null, osm Gui, osm Alt, osm Sft, osm Ctl, Vol Down, PgDn, ◄, ▼, ►, Term Paste, {type: trans, t: Enter}]
+    - [null, Media Play, Media Stop, Media Prev, Media Next, Vol Up, Copy Mode, Home, ▲, End, PgUp, {type: ghost, t: Del}]
+    - [null, osm Gui, osm Alt, osm Sft, osm Ctl, Vol Down, Shift Paste, ◄, ▼, ►, PgDn, {type: trans, t: Enter}]
     - [null, Undo, Cut, Copy, Paste, Calc, WS0, WS1, WS2, WS3, WS4, {type: ghost, t: WS5}]
     - null
     - {type: held}
@@ -36,7 +37,7 @@ layers:
     - null
     
   Sym:
-    - [null, "`", "<", "-", ">", null, null, "[", "_", "]", "...", null]
+    - [null, "`", "<", "-", ">", null, null, "[", "_", "]", "+", null]
     - [null, "!", "(", "=", ")", "#", "%", "{", "$", "}", ";", null]
     - [null, ":", "&", "^", {type: held, t: "@"}, null, null, {type: held, t: "*"}, "/", "\\", "|", null]
     - null
@@ -58,15 +59,5 @@ layers:
     - null
     
 combos:
-  - { p: [2, 3], k: CD }
-  - { p: [3, 4], k: LS }
-  - { p: [7, 8], k: "~/" }
-  - { p: [8, 9], k: "../" }
-  - { p: [14, 15], k: Tab }
-  - { p: [15, 16], k: Bspc }
   - { p: [19, 20], k: Esc }
-  - { p: [20, 21], k: Enter }
-  - { p: [19, 20, 21], k: Vim Save }
-  - { p: [26, 27], k: ":" }
-  - { p: [32, 33], k: ";" }
   - { p: [15, 20], k: Caps Word }

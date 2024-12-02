@@ -1,17 +1,7 @@
 // clang-format off
 
 // name           result                          1st chord key     2nd chord key   3rd chord key
-SUBS(LY_CD,       "cd ",                          KC_L,             KC_Y)
-SUBS(YP_LS,       "ls ",                          KC_Y,             KC_P)
-SUBS(FO_HOME,     "~/",                           KC_F,             KC_O)
-SUBS(OU_UPDIR,    "../",                          KC_O,             KC_U)
-COMB(RS_TAB,      KC_TAB,                         LCTL_T(KC_R),     LALT_T(KC_S))
-COMB(ST_BSPC,     KC_BSPC,                        LALT_T(KC_S),     LGUI_T(KC_T))
 COMB(NE_ESC,      KC_ESC,                         RGUI_T(KC_N),     RALT_T(KC_E))
-COMB(EI_ENT,      KC_ENT,                         RALT_T(KC_E),     RCTL_T(KC_I))
-SUBS(NEI_SAVE,    SS_TAP(X_ESC)":w"SS_TAP(X_ENT), RGUI_T(KC_N),     RALT_T(KC_E),   RCTL_T(KC_I))
-SUBS(JV_COLN,     ":",                            KC_J,             KC_V)
-SUBS(SLSDOT_SCLN, ";",                            KC_SLSH,          KC_COMM)
 COMB(CA_CAP,      CW_TOGG,                        LSFT_T(KC_C),     RSFT_T(KC_A))
 
 /* vim: set filetype=c: */

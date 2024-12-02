@@ -11,7 +11,6 @@
 #define TAPPING_TERM 175
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
-#define ACHORDION_STREAK
 
 // Timeouts
 #define ONESHOT_TIMEOUT        3000
