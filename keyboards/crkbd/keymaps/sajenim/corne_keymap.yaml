@@ -4,7 +4,7 @@ layout:
   qmk_layout: LAYOUT_split_3x6_3
 layers:
   Canary:
-    - [{type: ghost, t: Esc}, W, L, Y, P, B, Z, F, O, U, "'", {type: ghost, t: Ctrl Bspc}]
+    - [{type: ghost, t: Gesc}, W, L, Y, P, B, Z, F, O, U, "'", {type: ghost, t: Ctrl Bspc}]
     - [{type: ghost, t: Tab}, {h: Sft, t: C}, {h: Ctl, t: R}, {h: Alt, t: S}, {h: Gui, t: T}, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctl, t: I}, {h: Sft, t: A}, {type: ghost, t: Enter}]
     - [{type: ghost, t: osm Shift}, Q, J, V, {h: Sym, t: D}, K, X, {h: Sym, t: H}, "/", ",", ".", {type: ghost, t: osm Shift}]
     - osm Gui
@@ -26,12 +26,12 @@ layers:
     - null
     
   Num:
-    - [null, "-", 7, 8, 9, "/", null, F7, F8, F9, F10, {type: trans, t: Bspc}]
-    - [null, "+", 4, 5, 6, "*", null, F4, F5, F6, F11, {type: trans, t: Enter}]
-    - [null, 0, 1, 2, 3, ".", null, F1, F2, F3, F12, null]
+    - [null, "/", 7, 8, 9, "-", null, F7, F8, F9, F10, null]
+    - [null, "*", 4, 5, 6, "+", null, F4, F5, F6, F11, null]
+    - [null, ".", 1, 2, 3, "=", null, F1, F2, F3, F12, null]
     - null
-    - {type: trans, t: Repeat}
-    - {type: trans, t: Ctrl Bspc}
+    - {type: trans, t: "0"}
+    - {type: trans, t: Bspc}
     - null
     - {type: held}
     - null
