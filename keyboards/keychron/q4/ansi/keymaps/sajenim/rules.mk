@@ -1,7 +1,3 @@
 # Software features
-COMBO_ENABLE = yes
+CAPS_WORD_ENABLE = true
 
-# Combo dictionary
-ifeq ($(COMBO_ENABLE),yes)
-	VPATH += keyboards/gboards
-endif
