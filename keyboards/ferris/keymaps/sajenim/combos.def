@@ -19,6 +19,7 @@ COMB(EI_ENT,      KC_ENT,                         RALT_T(KC_E),     RCTL_T(KC_I)
 SUBS(YP_HOME,     "~/",                           KC_Y,             KC_P)
 SUBS(FO_UPDIR,    "../",                          KC_F,             KC_O)
 COMB(VD_COLN,     KC_COLN,                        KC_V,             LT(SYM, KC_D))
+COMB(HSLSH_BSLS,  KC_BSLS,                        LT(SYM, KC_H),    KC_SLSH)
 SUBS(NEI_SAVE,    SS_TAP(X_ESC)":w"SS_TAP(X_ENT), RGUI_T(KC_N),     RALT_T(KC_E),     RCTL_T(KC_I))
 
 COMB(CAPSWRD,     CW_TOGG,                        LSFT_T(KC_SPC),   RSFT_T(KC_BSPC))
