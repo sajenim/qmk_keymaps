@@ -1,28 +1,40 @@
 // clang-format off
 
 // name           result                          1st chord key     2nd chord key     3rd chord key
-COMB(WC_1,        KC_1,                           KC_W,             KC_C)
-COMB(LR_2,        KC_2,                           KC_L,             LCTL_T(KC_R))
-COMB(YS_3,        KC_3,                           KC_Y,             LALT_T(KC_S))
-COMB(PT_4,        KC_4,                           KC_P,             LGUI_T(KC_T))
-COMB(BG_5,        KC_5,                           KC_B,             KC_G)
-COMB(ZM_6,        KC_6,                           KC_Z,             KC_M)
-COMB(FN_7,        KC_7,                           KC_F,             RGUI_T(KC_N))
-COMB(OE_8,        KC_8,                           KC_O,             RALT_T(KC_E))
-COMB(UI_9,        KC_9,                           KC_U,             RCTL_T(KC_I))
-COMB(QOUTA_0,     KC_0,                           KC_QUOT,          KC_A)
 
-COMB(RS_TAB,      KC_TAB,                         LCTL_T(KC_R),     LALT_T(KC_S))
-COMB(ST_BSPC,     LCTL(KC_BSPC),                  LALT_T(KC_S),     LGUI_T(KC_T))
-COMB(NE_ESC,      KC_ESC,                         RGUI_T(KC_N),     RALT_T(KC_E))
-COMB(EI_ENT,      KC_ENT,                         RALT_T(KC_E),     RCTL_T(KC_I))
-SUBS(YP_HOME,     "~/",                           KC_Y,             KC_P)
-SUBS(FO_UPDIR,    "../",                          KC_F,             KC_O)
-COMB(VD_COLN,     KC_COLN,                        KC_V,             LT(SYM, KC_D))
-COMB(HSLSH_BSLS,  KC_BSLS,                        LT(SYM, KC_H),    KC_SLSH)
-SUBS(NEI_SAVE,    SS_TAP(X_ESC)":w"SS_TAP(X_ENT), RGUI_T(KC_N),     RALT_T(KC_E),     RCTL_T(KC_I))
+// vertical
+COMB(NUM_1,       KC_1,                           KC_W,             LSFT_T(KC_C))
+COMB(NUM_2,       KC_2,                           KC_L,             LCTL_T(KC_R))
+COMB(NUM_3,       KC_3,                           KC_Y,             LALT_T(KC_S))
+COMB(NUM_4,       KC_4,                           KC_P,             LGUI_T(KC_T))
+COMB(NUM_5,       KC_5,                           KC_B,             KC_G)
+COMB(NUM_6,       KC_6,                           KC_Z,             KC_M)
+COMB(NUM_7,       KC_7,                           KC_F,             RGUI_T(KC_N))
+COMB(NUM_8,       KC_8,                           KC_O,             RALT_T(KC_E))
+COMB(NUM_9,       KC_9,                           KC_U,             RCTL_T(KC_I))
+COMB(NUM_0,       KC_0,                           KC_QUOT,          RSFT_T(KC_A))
 
-COMB(CAPSWRD,     CW_TOGG,                        LSFT_T(KC_SPC),   RSFT_T(KC_BSPC))
+// top row
+COMB(FORWRD_WRD,  C(KC_RGHT),                     KC_F,             KC_O)
+COMB(GO_END,      KC_END,                         KC_O,             KC_U)
+COMB(BCKWRD_WRD,  C(KC_LEFT),                     KC_Y,             KC_P)
+COMB(GO_HOME,     KC_HOME,                        KC_L,             KC_Y)
+
+// middle row
+COMB(TAB,         KC_TAB,                         LCTL_T(KC_R),     LALT_T(KC_S))
+COMB(DELWRD,      C(KC_BSPC),                     LALT_T(KC_S),     LGUI_T(KC_T))
+COMB(ESCAPE,      KC_ESC,                         RGUI_T(KC_N),     RALT_T(KC_E))
+COMB(ENTER,       KC_ENT,                         RALT_T(KC_E),     RCTL_T(KC_I))
+COMB(CAPSWRD,     CW_TOGG,                        LCTL_T(KC_R),     LALT_T(KC_S),     LGUI_T(KC_T))
+SUBS(VIM_SAVE,    SS_TAP(X_ESC)":w"SS_TAP(X_ENT), RGUI_T(KC_N),     RALT_T(KC_E),     RCTL_T(KC_I))
+
+// bottom row
+COMB(COLN,        KC_COLN,                        KC_J,             KC_V)
+COMB(OS_LSFT,     OSM(MOD_LSFT),                  KC_V,             LT(SYM, KC_D))
+COMB(BACKSLASH,   KC_BSLS,                        KC_SLSH,          KC_COMM)
+COMB(OS_RSFT,     OSM(MOD_RSFT),                  LT(SYM, KC_H),    KC_SLSH)
+
+// thumb
 COMB(SLEEP,       KC_SLEP,                        LT(NAV, QK_REP),  LT(NUM, QK_AREP))
 
 /* vim: set filetype=c: */

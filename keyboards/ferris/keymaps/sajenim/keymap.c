@@ -26,8 +26,11 @@ enum layers {
 #include "g/keymap_combo.h" // layer names must be defined before engine include
 
 enum custom_keycodes {
+  HOME = SAFE_RANGE,
+  UPDIR,
+
   // Magic Keycodes
-  MG_EFORE = SAFE_RANGE,
+  MG_EFORE,
   MG_ON,
   MG_UST,
   MG_ENT,
@@ -45,8 +48,6 @@ enum custom_keycodes {
 
 #define NAV_REP LT(NAV, QK_REP)
 #define NUM_MAG LT(NUM, QK_AREP)
-#define SPC_SFT LSFT_T(KC_SPC)
-#define BAK_SFT RSFT_T(KC_BSPC)
 
 /* Home Row Mods:
  * https://precondition.github.io/home-row-mods */
@@ -59,8 +60,8 @@ enum custom_keycodes {
 #define HRM_E RALT_T(KC_E)
 #define HRM_I RCTL_T(KC_I)
 #define HRM_A RSFT_T(KC_A)
-#define HRM_D LT(SYM, KC_D)
-#define HRM_H LT(SYM, KC_H)
+#define SYM_D LT(SYM, KC_D)
+#define SYM_H LT(SYM, KC_H)
 
 /* One Shot Keys:
  * https://github.com/qmk/qmk_firmware/blob/master/docs/one_shot_keys.md */
@@ -89,23 +90,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------.                    ,--------------------------------------------.
          KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                         KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-         KC_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,    KC_A,
+        HRM_C,   HRM_R,   HRM_S,   HRM_T,    KC_G,                         KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_A,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-         KC_Q,    KC_J,    KC_V,   HRM_D,    KC_K,                         KC_X,   HRM_H, KC_SLSH, KC_COMM,  KC_DOT,
+         KC_Q,    KC_J,    KC_V,   SYM_D,    KC_K,                         KC_X,   SYM_H, KC_SLSH, KC_COMM,  KC_DOT,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                          NAV_REP, SPC_SFT,    BAK_SFT, NUM_MAG
+                                          NAV_REP,  KC_SPC,    KC_BSPC, NUM_MAG
                                       //`-----------------'  `-----------------'
   ),
 
   [NAV] = LAYOUT_split_3x5_2(
   //,--------------------------------------------.                    ,--------------------------------------------.
-      KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,
+      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-      KC_VOLD, OS_LCTL, OS_LALT, OS_LGUI, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,
+      OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
       CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, XXXXXXX,                      XXXXXXX, KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                          _______, XXXXXXX,    OS_RSFT, _______
+                                          _______, XXXXXXX,    XXXXXXX, _______ 
                                       //`-----------------'  `-----------------'
   ),
 
@@ -113,17 +114,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------.                    ,--------------------------------------------.
       KC_LPRN,    KC_7,    KC_8,    KC_9, KC_RPRN,                      XXXXXXX, KC_ASTR, KC_PERC, KC_SLSH, XXXXXXX,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-         KC_0,    KC_4,    KC_5,    KC_6,  KC_DOT,                      XXXXXXX, OS_RGUI, OS_RALT, OS_RCTL, XXXXXXX,
+         KC_0,    KC_4,    KC_5,    KC_6,  KC_DOT,                      XXXXXXX, OS_RGUI, OS_RALT, OS_RCTL, OS_RSFT,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
       KC_LABK,    KC_1,    KC_2,    KC_3, KC_RABK,                      XXXXXXX, KC_PLUS,  KC_EQL, KC_MINS, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                          _______, OS_LSFT,    XXXXXXX, _______
+                                          _______, XXXXXXX,    XXXXXXX, _______
                                       //`-----------------'  `-----------------'
   ),
 
   [SYM] = LAYOUT_split_3x5_2(
   //,--------------------------------------------.                    ,--------------------------------------------.
-       KC_GRV, KC_LABK, KC_MINS, KC_RABK, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_UNDS, KC_RBRC, KC_PLUS,
+       KC_GRV, KC_LABK, KC_MINS, KC_RABK,    HOME,                        UPDIR, KC_LBRC, KC_UNDS, KC_RBRC, KC_PLUS,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
       KC_EXLM, KC_LPRN,  KC_EQL, KC_RPRN, KC_HASH,                      KC_PERC, KC_LCBR,  KC_DLR, KC_RCBR, KC_SCLN,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
@@ -167,7 +168,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     case  KC_O: return KC_E;     // "OE" sfb (0.060%)
     case  KC_P: return KC_T;     // "PT" sfb (0.050%)
     case HRM_S: return KC_Y;     // "SY" sfb (0.024%)
-    case HRM_D: return KC_G;     // "DG" sfb (0.021%)
+    case SYM_D: return KC_G;     // "DG" sfb (0.021%)
     
     // Magic Keycodes
     case    KC_B: return MG_EFORE;
@@ -180,7 +181,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     case    KC_W: return MG_HICH;
     case    KC_X: return MG_ES;
     case KC_COMM: return MG_BUT;
-    case SPC_SFT: return MG_THE;
+    case  KC_SPC: return MG_THE;
   }
   return KC_TRNS;
   // clang-format on
@@ -196,17 +197,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         process_repeat_key(QK_REP, record);
         return false;
       }
+      return true;
     case NUM_MAG:
       if (record->tap.count) {
         process_repeat_key(QK_AREP, record);
         return false;
       }
+      return true;
   }
 
   // clang-format off
   if (record->event.pressed) {
     int rep_count = get_repeat_key_count();
     switch (keycode) {
+      case     HOME: SEND_STRING("~/"         ); return false;
+      case    UPDIR: SEND_STRING("../"        ); return false;
+
+      // Magic keycodes
       case MG_EFORE: SEND_STRING(/*b*/ "efore"); return false;
       case    MG_ON: SEND_STRING(/*i*/ "on"   ); return false;
       case   MG_UST: SEND_STRING(/*j*/ "ust"  ); return false;
@@ -222,7 +229,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (rep_count > 0) {
       switch (keycode) {
         // Repeat Key Overrides
-        case    KC_A: SEND_STRING(/*a*/ "nd"    ); return false; // "and"     trigram (3.293%)
+        case   HRM_A: SEND_STRING(/*a*/ "nd"    ); return false; // "and"     trigram (3.293%)
         case   HRM_I: SEND_STRING(/*i*/ "ng"    ); return false; // "ing"     trigram (3.476%)
         case    KC_Y: SEND_STRING(/*y*/ "ou"    ); return false; // "you"     trigram (3.492%)
         case   HRM_N: SEND_STRING(/*n*/ "f"     ); return false; // "nf"      sfb     (0.036%)
@@ -230,7 +237,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case    KC_W: SEND_STRING(/*w*/ "ould"  ); return false; // "would"   brief
         case KC_COMM: SEND_STRING(/*,*/ " and"  ); return false; // ", and"   brief
         case  KC_DOT: SEND_STRING(/*.*/ "org"   ); return false; // ".org"    brief
-        case SPC_SFT: SEND_STRING(/* */ "for"   ); return false; // " for"    brief
+        case  KC_SPC: SEND_STRING(/* */ "for"   ); return false; // " for"    brief
       }
     }
   }
