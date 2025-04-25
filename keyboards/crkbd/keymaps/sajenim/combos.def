@@ -1,8 +1,0 @@
-// clang-format off
-
-// name           result                          1st chord key     2nd chord key   3rd chord key
-COMB(NE_ESC,      KC_ESC,                         RGUI_T(KC_N),     RALT_T(KC_E))
-COMB(CA_CAP,      CW_TOGG,                        LSFT_T(KC_C),     RSFT_T(KC_A))
-
-/* vim: set filetype=c: */
-
