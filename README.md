@@ -1,13 +1,18 @@
 # QMK Keymaps
 
-Personal keymaps for programmable keyboards. 
+![ferris-sweep](./assets/ferris-sweep.jpg)
 
 ## Features
 * **Autocorrect**
 * **Combos**
 * **Home Row Mods**
-* **Nav, Num, Fun Layers**
+* **Nav, Num, Sym Layers**
 * **Repeat / Magic Keys**
+
+## My Keymap
+![ferris-keymap](./assets/ferris-sajenim.svg)
+
+See [**magic sturdy**](https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md) for usage of the magic key.
 
 ## Installation
 Follow the [getting started](https://docs.qmk.fm/#/newbs_getting_started) docs to install [QMK Firmware](https://docs.qmk.fm/#/)
