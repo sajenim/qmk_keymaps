@@ -15,14 +15,14 @@ COMB(NUM_9,       KC_9,                           KC_U,             RCTL_T(KC_I)
 COMB(NUM_0,       KC_0,                           KC_QUOT,          RSFT_T(KC_A))
 
 // top row
-COMB(FORWRD_WRD,  C(KC_RGHT),                     KC_F,             KC_O)
-COMB(GO_END,      KC_END,                         KC_O,             KC_U)
-COMB(BCKWRD_WRD,  C(KC_LEFT),                     KC_Y,             KC_P)
-COMB(GO_HOME,     KC_HOME,                        KC_L,             KC_Y)
+COMB(FORWRD_WRD,  S(KC_W),                        KC_F,             KC_O)
+COMB(GO_END,      KC_DLR,                         KC_O,             KC_U)
+COMB(BCKWRD_WRD,  S(KC_B),                        KC_Y,             KC_P)
+COMB(GO_HOME,     KC_0,                           KC_L,             KC_Y)
 
 // middle row
 COMB(TAB,         KC_TAB,                         LCTL_T(KC_R),     LALT_T(KC_S))
-COMB(DELWRD,      C(KC_BSPC),                     LALT_T(KC_S),     LGUI_T(KC_T))
+SUBS(DELWRD,      "dw",                           LALT_T(KC_S),     LGUI_T(KC_T))
 COMB(ESCAPE,      KC_ESC,                         RGUI_T(KC_N),     RALT_T(KC_E))
 COMB(ENTER,       KC_ENT,                         RALT_T(KC_E),     RCTL_T(KC_I))
 COMB(CAPSWRD,     CW_TOGG,                        LCTL_T(KC_R),     LALT_T(KC_S),     LGUI_T(KC_T))
