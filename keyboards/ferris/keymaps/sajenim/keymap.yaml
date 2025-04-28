@@ -6,24 +6,24 @@ layers:
     - [w, l, y, p, b, z, f, o, u, "'"]
     - [{h: Shift, t: c}, {h: Ctrl, t: r}, {h: Alt, t: s}, {h: Gui, t: t}, g, m, {h: Gui, t: n}, {h: Alt, t: e}, {h: Ctrl, t: i}, {h: Shift, t: a}]
     - [q, j, v, {h: Sym, t: d}, k, x, {h: Sym, t: h}, "/", ",", "."]
-    - [{h: Nav, t: Repeat}, Spc, Bspc, {h: Num, t: Magic}]
+    - [{h: Nav, t: Repeat}, Spc, {t: Bspc, shifted: Del}, {h: Num, t: Magic}]
   
   NAV:
-    - [Null, Prev Track, Play Pause, Next Track, Vol Up, Page Up, Home, Up, End, Null]
-    - [OS Shift, OS Ctrl, OS Alt, OS Gui, Vol Down, Page Down, Left, Down, Right, Del]
-    - [Undo, Cut, Copy, Paste, Null, Null, Bspc, Null, Null, Null]
-    - [{type: held}, Null, Null, {h: Num, t: Magic, type: trans}]
+    - [Null, Prev Track, Play Pause, Next Track, Vol Up, Null, Home, Up, End, Page Up]
+    - [OS Shift, OS Ctrl, OS Alt, OS Gui, Vol Down, Null, Left, Down, Right, Page Down]
+    - [Undo, Cut, Copy, Paste, Null, Null, Null, Null, Null, Null]
+    - [{type: held}, Null, {t: Bspc, shifted: Del, type: trans}, {h: Num, t: Magic, type: trans}]
 
   NUM:
     - ["(", 7, 8, 9, ")", Null, "*", "%", "/", Null]
     - [0, 4, 5, 6, ".", Null, OS Gui, OS Alt, OS Ctrl, OS Shift]
     - ["<", 1, 2, 3, ">", Null, "+", "=", "-", Null]
-    - [{h: Nav, t: Repeat, type: trans}, Null, Null, {type: held}]
+    - [{h: Nav, t: Repeat, type: trans}, {t: Spc, type: trans}, Null, {type: held}]
   
   SYM:
     - ["`", "<", "-", ">", "~/", "../", "[", "_", "]", "+"]
     - ["!", "(", "=", ")", "#", "%", "{", "$", "}", ";"]
-    - ["|", "&", "^", {t: "@", type: held}, Null, Null, {t: "*", type: held}, {t: "/", type: trans}, {t: ",", type: trans}, {t: ".", type: trans}]
+    - ["|", "&", "^", "@", Null, Null, "*", {t: "/", type: trans}, {t: ",", type: trans}, {t: ".", type: trans}]
     - [Null, Null, Null, Null]
 
 combos:

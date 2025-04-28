@@ -100,13 +100,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [NAV] = LAYOUT_split_3x5_2(
   //,--------------------------------------------.                    ,--------------------------------------------.
-      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,
+      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,                      XXXXXXX, KC_HOME,   KC_UP,  KC_END, KC_PGUP,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-      OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, KC_VOLD,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,
+      OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, KC_VOLD,                      XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-      CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, XXXXXXX,                      XXXXXXX, KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX,
+      CK_UNDO,  CK_CUT, CK_COPY, CK_PSTE, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                          _______, XXXXXXX,    XXXXXXX, _______ 
+                                          _______, XXXXXXX,    _______, _______ 
                                       //`-----------------'  `-----------------'
   ),
 
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
       KC_LABK,    KC_1,    KC_2,    KC_3, KC_RABK,                      XXXXXXX, KC_PLUS,  KC_EQL, KC_MINS, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                          _______, XXXXXXX,    XXXXXXX, _______
+                                          _______, _______,    XXXXXXX, _______
                                       //`-----------------'  `-----------------'
   ),
 
@@ -137,8 +137,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // clang-format on
 
+/* Key overrides:
+ * Override the behaviour of keys */
+
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+	&delete_key_override
+};
+
 /* Repeat key:
- * Configure additional key */
+ * Configure additional keys */
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
   switch (keycode) {
