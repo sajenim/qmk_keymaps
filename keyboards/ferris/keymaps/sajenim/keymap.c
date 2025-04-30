@@ -21,6 +21,7 @@ enum layers {
   NAV,
   NUM,
   SYM,
+  FUN,
 };
 
 #include "g/keymap_combo.h" // layer names must be defined before engine include
@@ -132,10 +133,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX
                                       //`-----------------'  `-----------------'
-  )
+  ),
+
+  [FUN] = LAYOUT_split_3x5_2(
+  //,--------------------------------------------.                    ,--------------------------------------------.
+       KC_F12,   KC_F7,   KC_F8,   KC_F9, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+       KC_F11,   KC_F4,   KC_F5,   KC_F6, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+       KC_F10,   KC_F1,   KC_F2,   KC_F3, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  QK_RBT,
+  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+                                          _______, XXXXXXX,    XXXXXXX, _______
+                                      //`-----------------'  `-----------------'
+  ),
 };
 
 // clang-format on
+
+/* Tri-state Layers:
+ * Setup FUN layer to activate when NAV & NUM is held */
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  // Activate function layer
+  state = update_tri_layer_state(state, NAV, NUM, FUN);
+  return state;
+}
 
 /* Key overrides:
  * Override the behaviour of keys */
