@@ -34,8 +34,5 @@ COMB(OS_LSFT,     OSM(MOD_LSFT),                  KC_V,             LT(SYM, KC_D
 COMB(BACKSLASH,   KC_BSLS,                        KC_SLSH,          KC_COMM)
 COMB(OS_RSFT,     OSM(MOD_RSFT),                  LT(SYM, KC_H),    KC_SLSH)
 
-// thumb
-COMB(SLEEP,       KC_SLEP,                        LT(NAV, QK_REP),  LT(NUM, QK_AREP))
-
 /* vim: set filetype=c: */
 
